@@ -13,43 +13,13 @@ This repository contains a small, fast portfolio used to showcase projects and c
 - Vite
 - Tailwind CSS
 
-## Quick Start
-
-Install dependencies:
-
-```
-npm install
-```
-
-Run the dev server:
-
-```
-npm run dev
-```
-
-Build for production:
-
-```
-npm run build
-```
-
-Preview production build locally:
-
-```
-npm run preview
-```
-
 ## Project Structure (summary)
 
 - `portfolio/` — main app folder
-	- `src/` — source files (components, assets, styles)
-	- `public/` — static assets
-	- `index.html`, `vite.config.js`, `tailwind.config.js`
+- `src/` — source files (components, assets, styles)
+- `public/` — static assets
+- `index.html`, `vite.config.js`, `tailwind.config.js`
 
-## Contributing
+## Website
 
-Small improvements and fixes are welcome. Open an issue or a pull request.
-
-## License
-
-MIT — created by Tyron Bech
+- <https://tyron-bechayda.vercel.app>
