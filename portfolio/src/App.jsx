@@ -1,6 +1,6 @@
-import { Github, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import GradientText from "./components/GradientText";
-import githubIcon from "./assets/GitHub_Invertocat_Black.svg";
+import githubIcon from "./assets/svg/GitHub_Invertocat_Black.svg";
 
 function App() {
   return (
