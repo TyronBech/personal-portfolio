@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lexend:wght@100..900&family=Special+Gothic+Expanded+One&display=swap');
 @import "tailwindcss";
 
 @theme {
   /* This creates the utility class "font-main" */
   --font-main: "Archivo Black", sans-serif;
-}
-
-body {
-  font-family: var(--font-main);
+  --font-lexend: "Lexend", sans-serif;
+  --font-special-gothic: "Special Gothic Expanded One", sans-serif;
 }

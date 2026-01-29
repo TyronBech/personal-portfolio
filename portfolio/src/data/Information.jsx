@@ -1,29 +1,35 @@
-import { GitHub, LinkedIn } from "lucide-react";
-
 export const details = {
   first_name: "Tyron",
   middle_name: "Panti",
   last_name: "Bechayda",
-  role: "Full Stack Web Developer",
+  role: "Full Stack Web/Software Developer",
   email: "tyronbechayda1112@gmail.com",
   phone: "09205662597",
+  message: "Hi! I am Tyron Bechayda - a passionate Full Stack Web/Software Developer creating a seamless and scalable solutions for modern web applications.",
   about: `Currently pursuing a Bachelor of Science in Information Technology at the 
           Polytechnic University of the Philippines. A passionate Full Stack Web Developer 
           with knowledge in building dynamic and scalable web applications. Currently exploring 
           the realms of React and frontend design for enhanced user experiences.`,
+
+  address: {
+    city: "Taguig City",
+    country: "Philippines",
+  },
+
+  status: "Available for work",
 
   socials: [
     {
       id: 1,
       name: "github",
       url: "https://github.com/TyronBech",
-      icon: GitHub,
+      icon: null,
     },
     {
       id: 2,
       name: "linkedin",
       url: "https://www.linkedin.com/in/tyronbechayda1112",
-      icon: LinkedIn,
+      icon:  null,
     }
   ],
 
@@ -58,7 +64,7 @@ export const details = {
       description: `Developed Laravel-based web application for Library Management System,
                     using RFID and Barcode technologies to streamline students' activities and book management inside the library.
                     Utilizing PHP Laravel for backend development, MySQL for database management, and frontend framework like Tailwind CSS for styling.`,
-      start_year: 2023,
+      start_year: "September 2024",
       end_year: null,
     },
     {
