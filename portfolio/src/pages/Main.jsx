@@ -4,6 +4,7 @@ import profile from "@/assets/images/image 1.png";
 function Main() {
   return (
     <div className="relative overflow-hidden w-screen h-screen bg-[#1f2022]">
+      {/* Profile Picture */}
       <div className="z-1 absolute -bottom-10 left-1/2 transform -translate-x-1/2">
         <img
           src={profile}
@@ -11,17 +12,20 @@ function Main() {
           alt="Profile Picture"
         ></img>
       </div>
+      {/* Name */}
       <div className="z-3 absolute bottom-0 w-full text-white text-center">
         <h1 className="text-[150px] font-special-gothic mb-6">
           <span className="text-[#FC4C02]">{details.first_name}</span>{" "}
           {details.last_name}
         </h1>
       </div>
+      {/* Bottom Shadow and Content */}
       <div className="absolute w-screen h-screen">
-        {/* Bottom Shadow */}
         <div className="z-2 bg-linear-to-t from-[#1f2022] via-[#1f202256] to-transparent w-full h-1/3 absolute bottom-0"></div>
       </div>
+      {/* Content */}
       <div className="z-4 absolute top-0 left-0 w-screen h-screen grid grid-cols-2">
+        {/* Left Side */}
         <div className="flex flex-col items-start justify-center mr-62">
           <div className="mb-2 ml-20 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/80 px-4 py-1.5 text-sm text-zinc-400">
             <span className="relative flex h-2 w-2">
@@ -34,6 +38,7 @@ function Main() {
           </div>
           <p className="text-white text-5xl tracking-wider font-lexend mx-20">{details.role}</p>
         </div>
+        {/* Right Side */}
         <div className="flex flex-col items-end justify-center ml-62">
           <p className="mt-7 text-zinc-400 text-xl tracking-wide font-lexend mx-20 text-left">
             {details.message}
