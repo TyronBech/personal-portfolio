@@ -53,21 +53,21 @@ function Contact() {
             <h3 className="text-2xl font-special-gothic text-white italic mb-6 md:mb-0">Social Spaces</h3>
             <div className="grid sm:grid-cols-2 gap-4 mt-8">
               <a 
-                href={details.socials.linkedin} 
+                href={details.socials[1].url} 
                 target="_blank" 
                 className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
               >
                 <Linkedin className="w-8 h-8 text-zinc-400 group-hover:text-halloween-orange mb-2" />
-                <span className="text-sm font-lexend text-zinc-300">LinkedIn</span>
+                <span className="text-sm font-lexend text-zinc-300">{details.socials[1].name}</span>
               </a>
 
               <a 
-                href={details.socials.github} 
+                href={details.socials[0].url} 
                 target="_blank" 
                 className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
               >
                 <Github className="w-8 h-8 text-zinc-400 group-hover:text-halloween-orange mb-2" />
-                <span className="text-sm font-lexend text-zinc-300">GitHub</span>
+                <span className="text-sm font-lexend text-zinc-300">{details.socials[0].name}</span>
               </a>
             </div>
 
