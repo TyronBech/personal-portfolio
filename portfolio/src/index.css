@@ -9,3 +9,6 @@
   --color-rich-black: #1f2022;
   --color-halloween-orange: #FC4C02;
 }
+html {
+  scroll-behavior: smooth;
+}

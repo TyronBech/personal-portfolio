@@ -7,34 +7,36 @@ function Project() {
     <div className="overflow-hidden w-screen h-auto lg:h-screen">
       <h1
         id="projects"
-        className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-12 text-center"
+        className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white my-6 text-center"
       >
         Projects
       </h1>
-      <div className="grid lg:grid-cols-3 gap-12 px-16">
+      {/* Projects */}
+      <div className="grid lg:grid-cols-3 gap-8 px-16">
         {details.projects.map((project) => (
           <SpotlightCard
             className="w-full max-w-lg mx-auto h-full"
             spotlightColor="rgba(252, 76, 2, 0.2)"
           >
-            {/* 1. Add flex flex-col and h-full to this wrapper */}
+            {/* Project Card */}
             <div key={project.id} className="flex flex-col h-full">
+              {/* Image */}
               <img
                 src={project.image}
                 alt={project.name}
-                className="w-full rounded-xl"
+                className="w-[95%] rounded-xl mx-auto"
               />
-
-              {/* 2. Add flex-1 so this div fills the remaining height */}
-              <div
-                id="info"
-                className="flex flex-col justify-between p-4 flex-1"
-              >
+              <div className="flex flex-col justify-between p-4 flex-1">
                 <div className="flex flex-col space-y-2 text-xl md:text-2xl lg:text-3xl font-special-gothic text-white my-4">
-                  <span className="text-halloween-orange tracking-wide">{project.name}</span>
+                  {/* Project Name */}
+                  <span className="text-halloween-orange tracking-wide">
+                    {project.name}
+                  </span>
+                  {/* Project Type and Year */}
                   <span className="text-gray-300 text-xs font-lexend tracking-wide">
                     {project.type} &#8226; {project.year}
                   </span>
+                  {/* Project Description */}
                   <p className="text-zinc-400 text-sm md:text-lg leading-relaxed font-lexend mt-3">
                     {project.description}
                   </p>
