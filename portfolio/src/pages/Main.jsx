@@ -1,5 +1,5 @@
 import { details } from "@/data/Information.jsx";
-import profile from "@/assets/images/image 1.png";
+import profile from "@/assets/images/Self.png";
 
 function Main() {
   return (
