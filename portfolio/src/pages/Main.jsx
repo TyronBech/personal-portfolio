@@ -40,7 +40,7 @@ function Main() {
               </span>
             </div>
             {/* Role */}
-            <p className="text-white text-2xl lg:text-3xl xl:text-5xl tracking-wider font-lexend font-semibold text-center lg:text-left">
+            <p className="text-white text-2xl lg:text-4xl xl:text-5xl tracking-wider font-lexend font-semibold text-center lg:text-left">
               {details.role}
             </p>
           </div>
