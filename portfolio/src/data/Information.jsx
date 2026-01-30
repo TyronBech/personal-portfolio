@@ -1,3 +1,7 @@
+import CPU from "@/assets/images/CPU.png";
+import Games from "@/assets/images/Games.png";
+import Shapes from "@/assets/images/Shapes.png";
+
 export const details = {
   first_name: "Tyron",
   middle_name: "Panti",
@@ -30,7 +34,7 @@ export const details = {
       name: "linkedin",
       url: "https://www.linkedin.com/in/tyronbechayda1112",
       icon:  null,
-    }
+    },
   ],
 
   school: {
@@ -98,6 +102,7 @@ export const details = {
       technologies: ["C++", "Visual Studio"],
       repository: "https://github.com/TyronBech/Process-Scheduling-Programs",
       year: 2024,
+      image: CPU,
     },
     {
       id: 2,
@@ -107,6 +112,7 @@ export const details = {
       technologies: ["Python", "tkinter"],
       repository: "https://github.com/TyronBech/Py_Games",
       year: 2023,
+      image: Games,
     },
     {
       id: 3,
@@ -116,6 +122,7 @@ export const details = {
       technologies: ["Java", "Java Swing"],
       repository: "https://github.com/TyronBech/Shape_Calculator",
       year: 2024,
+      image: Shapes,
     }
   ],
 }
