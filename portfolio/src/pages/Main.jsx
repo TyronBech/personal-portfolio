@@ -3,7 +3,7 @@ import profile from "@/assets/images/Self.png";
 
 function Main() {
   return (
-    <div className="relative border overflow-hidden w-full h-screen bg-rich-black">
+    <div className="relative overflow-hidden w-full h-screen bg-rich-black">
 
       {/* --- CONTAINER --- */}
       <div className="w-full lg:h-full flex flex-col md:justify-start mt-10 lg:mt-0 lg:justify-center items-center lg:block">
