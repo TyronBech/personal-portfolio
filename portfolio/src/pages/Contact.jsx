@@ -32,7 +32,7 @@ function Contact() {
                 </div>
                 <div>
                   <p className="text-xs text-zinc-500 font-lexend uppercase tracking-widest">Email Me</p>
-                  <p className="text-sm md:text-md font-lexend">{details.email}</p>
+                  <p className="text-xs md:text-md font-lexend">{details.email}</p>
                 </div>
               </a>
 
@@ -42,7 +42,7 @@ function Contact() {
                 </div>
                 <div>
                   <p className="text-xs text-zinc-500 font-lexend uppercase tracking-widest">Call Me</p>
-                  <p className="text-sm md:text-md font-lexend">{details.phone}</p>
+                  <p className="text-xs md:text-md font-lexend">{details.phone}</p>
                 </div>
               </a>
             </div>
