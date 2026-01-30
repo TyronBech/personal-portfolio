@@ -36,7 +36,7 @@ function Main() {
               {details.status}
             </span>
           </div>
-          <p className="text-white text-5xl tracking-wider font-lexend mx-20">{details.role}</p>
+          <p className="text-white text-5xl tracking-wider font-lexend font-semibold mx-20">{details.role}</p>
         </div>
         {/* Right Side */}
         <div className="flex flex-col items-end justify-center ml-62">
