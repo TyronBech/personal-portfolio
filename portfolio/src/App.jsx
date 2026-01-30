@@ -5,7 +5,7 @@ import Experience  from "@/pages/Experience.jsx";
 
 function App() {
   return (
-    <div className="relative overflow-hidden bg-[#1f2022]">
+    <div className="relative overflow-hidden bg-rich-black">
       <Header />
       <Main />
       <About />

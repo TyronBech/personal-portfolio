@@ -14,8 +14,8 @@ function Experience() {
             <p className="h-auto text-zinc-400 text-md md:text-lg leading-relaxed font-lexend">
               {details.experiences.map((experience) => (
                 <div key={experience.id} className="mb-6">
-                  <h2 className="text-lg tracking-wider md:text-xl font-semibold">
-                    <span className="text-[#FC4C02]">{experience.role}</span><span className="text-gray-300 font-semibold"> at {experience.company}</span>
+                  <h2 className="text-lg tracking-wider md:text-2xl font-semibold">
+                    <span className="text-halloween-orange">{experience.role}</span><span className="text-gray-300 font-semibold"> at {experience.company}</span>
                   </h2>
                   <p className="text-zinc-400 text-sm md:text-md tracking-wide leading-relaxed font-lexend">
                     {experience.description}
