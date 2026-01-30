@@ -7,8 +7,8 @@ export const details = {
   phone: "09205662597",
   message: "Hi! I am Tyron Bechayda - a passionate Full Stack Web/Software Developer creating a seamless and scalable solutions for modern web applications.",
   about: `Currently pursuing a Bachelor of Science in Information Technology at the 
-          Polytechnic University of the Philippines. A passionate Full Stack Web Developer 
-          with knowledge in building dynamic and scalable web applications. Currently exploring 
+          Polytechnic University of the Philippines. A passionate Full Stack Web/Software Developer 
+          with knowledge in building dynamic and scalable applications. Currently exploring 
           the realms of React and frontend design for enhanced user experiences.`,
 
   address: {
@@ -75,6 +75,16 @@ export const details = {
                     Implementing responsive UI forms, proper data validation, and seamless user experience.`,
       start_year: "October 2025",
       end_year: "January 2026",
+    },
+    {
+      id: 3,
+      company: "Bicutan Parochial School, Inc.",
+      role: "Web Developer",
+      description: `Contributed to the development of the school's official website.
+                    Implemented responsive design, interactive features, and optimized performance for better user experience. 
+                    Utilized WordPress for content management and frontend development.`,
+      start_year: "July 2025",
+      end_year: null,
     },
   ],
 }

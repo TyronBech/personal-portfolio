@@ -3,7 +3,7 @@ import profile from "@/assets/images/Self.png";
 
 function Main() {
   return (
-    <div className="relative overflow-hidden w-screen h-screen bg-[#1f2022]">
+    <div className="relative overflow-hidden w-screen h-screen">
       {/* Profile Picture */}
       <div className="z-1 absolute -bottom-10 left-1/2 transform -translate-x-1/2">
         <img
@@ -21,7 +21,7 @@ function Main() {
       </div>
       {/* Bottom Shadow and Content */}
       <div className="absolute w-screen h-screen">
-        <div className="z-2 bg-linear-to-t from-[#1f2022] via-[#1f202256] to-transparent w-full h-1/3 absolute bottom-0"></div>
+        <div className="z-2 bg-linear-to-t from-[#1f2022] via-[#1f202256] to-transparent w-full h-2/4 absolute bottom-0"></div>
       </div>
       {/* Content */}
       <div className="z-4 absolute top-0 left-0 w-screen h-screen grid grid-cols-2">
