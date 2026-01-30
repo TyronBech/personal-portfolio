@@ -87,4 +87,35 @@ export const details = {
       end_year: null,
     },
   ],
+
+  projects: [
+    {
+      id: 1,
+      name: "CPU Process Scheduler",
+      description: `A desktop application that simulates various CPU scheduling algorithms
+                    such as FCFS, SJF, Priority Scheduling, and Round Robin. 
+                    Built using Java Swing for the user interface and Java for backend logic.`,
+      technologies: ["C++", "Visual Studio"],
+      repository: "https://github.com/TyronBech/Process-Scheduling-Programs",
+      year: 2024,
+    },
+    {
+      id: 2,
+      name: "Python Mini Games",
+      description: `Composed of 2 mini games developed using Python's tkinter library.
+                    Includes games like Rock-Paper-Scissors and tick-tack-toe with interactive graphics.`,
+      technologies: ["Python", "tkinter"],
+      repository: "https://github.com/TyronBech/Py_Games",
+      year: 2023,
+    },
+    {
+      id: 3,
+      name: "Shape Calculator",
+      description: `A GUI-based application that calculates area of various 2-dimensional shapes.
+                    Built using Java Swing for the user interface and Java for backend logic.`,
+      technologies: ["Java", "Java Swing"],
+      repository: "https://github.com/TyronBech/Shape_Calculator",
+      year: 2024,
+    }
+  ],
 }
