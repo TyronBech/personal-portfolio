@@ -11,6 +11,7 @@ function App() {
       <Main />
       <About />
       <Experience />
+      <Project />
     </div>
   );
 }

@@ -101,6 +101,7 @@ export const details = {
                     Built using Java Swing for the user interface and Java for backend logic.`,
       technologies: ["C++", "Visual Studio"],
       repository: "https://github.com/TyronBech/Process-Scheduling-Programs",
+      type: "CLI Application",
       year: 2024,
       image: CPU,
     },
@@ -109,8 +110,9 @@ export const details = {
       name: "Python Mini Games",
       description: `Composed of 2 mini games developed using Python's tkinter library.
                     Includes games like Rock-Paper-Scissors and tick-tack-toe with interactive graphics.`,
-      technologies: ["Python", "tkinter"],
+      technologies: ["Python", "tkinter", "Visual Studio Code"],
       repository: "https://github.com/TyronBech/Py_Games",
+      type: "Desktop Application",
       year: 2023,
       image: Games,
     },
@@ -119,8 +121,9 @@ export const details = {
       name: "Shape Calculator",
       description: `A GUI-based application that calculates area of various 2-dimensional shapes.
                     Built using Java Swing for the user interface and Java for backend logic.`,
-      technologies: ["Java", "Java Swing"],
+      technologies: ["Java", "Java Swing", "Eclipse IDE"],
       repository: "https://github.com/TyronBech/Shape_Calculator",
+      type: "Desktop Application",
       year: 2024,
       image: Shapes,
     }
