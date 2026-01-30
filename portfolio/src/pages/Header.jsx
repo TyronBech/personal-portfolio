@@ -1,8 +1,8 @@
 function Header() {
   return (
-    <header className="absolute z-100 w-full h-20 flex items-center justify-end">
+    <header className="lg:absolute z-100 w-full h-20 flex items-center justify-end">
       <nav className="relative w-full h-full flex items-center justify-center">
-        <ul className="flex gap-16 text-white font-lexend tracking-wider text-sm">
+        <ul className="flex gap-6 sm:gap-8 md:gap-12 lg:gap-16 text-white font-lexend tracking-wider text-sm">
           {["About", "Experience", "Projects", "Contact"].map((item) => (
             <li key={item}>
               <a
