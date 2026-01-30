@@ -25,13 +25,13 @@ export const details = {
   socials: [
     {
       id: 1,
-      name: "github",
+      name: "GitHub",
       url: "https://github.com/TyronBech",
       icon: null,
     },
     {
       id: 2,
-      name: "linkedin",
+      name: "LinkedIn",
       url: "https://www.linkedin.com/in/tyronbechayda1112",
       icon:  null,
     },
