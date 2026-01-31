@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    container_name: my-react-portfolio
+    ports:
+      - "8080:80"
+    restart: always
+
+# Simply run this command to start your services:
+# docker compose up -d --build
