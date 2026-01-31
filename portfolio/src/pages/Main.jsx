@@ -3,16 +3,16 @@ import profile from "@/assets/images/Self.png";
 
 function Main() {
   return (
-    <div className="relative overflow-hidden w-full h-screen bg-rich-black">
+    <div className="relative overflow-hidden w-screen lg:h-screen">
 
       {/* --- CONTAINER --- */}
-      <div className="w-full lg:h-full flex flex-col md:justify-start mt-10 lg:mt-0 lg:justify-center items-center lg:block">
+      <div className="w-full h-full flex flex-col md:justify-start mt-10 lg:mt-0 lg:justify-center items-center lg:block">
 
         {/* 1. PROFILE PICTURE */}
         <div className="z-10 order-1 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2">
           <img
             src={profile}
-            className="w-48 md:w-64 lg:w-110 xl:w-130 aspect-square lg:aspect-auto object-cover rounded-full lg:rounded-t-[3rem] lg:rounded-b-none shadow-2xl lg:shadow-none"
+            className="w-48 md:w-72 lg:w-120 xl:w-130 aspect-square lg:aspect-auto object-cover rounded-full lg:rounded-t-[3rem] lg:rounded-b-none shadow-2xl lg:shadow-none"
             alt="Profile Picture"
           />
         </div>

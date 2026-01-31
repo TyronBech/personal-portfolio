@@ -3,7 +3,7 @@ import { Mail, Phone, Linkedin, Github, ArrowRight } from 'lucide-react';
 
 function Contact() {
   return (
-    <div id="contact" className="min-h-screen w-full flex flex-col items-center justify-center bg-rich-black px-6 pt-20">
+    <div id="contact" className="w-screen flex flex-col items-center justify-center px-6 py-24">
       {/* Header Section */}
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-4">

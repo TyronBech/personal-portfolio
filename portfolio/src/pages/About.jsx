@@ -4,8 +4,8 @@ import PUPT from "@/assets/svg/PUPT_Logo.svg";
 
 function About() {
   return (
-    <div id="about" className="overflow-hidden w-screen h-screen">
-      <div className="grid md:grid-cols-2 h-screen w-screen">
+    <div id="about" className="overflow-hidden w-screen py-28">
+      <div className="grid md:grid-cols-2 content-center">
         {/* Left Side - Image */}
         <div className="hidden md:flex md:items-center md:justify-center">
           <img src={Teddy} alt="Teddy Bear" className="w-1/2 rounded-3xl" />

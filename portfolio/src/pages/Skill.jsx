@@ -4,7 +4,7 @@ import { details } from "@/data/Information.jsx";
 function Skill() {
   const skillsOneLine = details.skills.join("\u00A0•\u00A0") + "\u00A0•\u00A0";
   return (
-    <div className="w-full text-base pt-24">
+    <div className="w-full text-base pt-24 pb-12">
       <ScrollVelocity
         texts={[skillsOneLine]}
         velocity={50}
