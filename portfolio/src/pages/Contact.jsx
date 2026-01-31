@@ -9,10 +9,10 @@ function Contact() {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-4">
           Let's <span className="text-halloween-orange">Connect</span>
         </h1>
-        <p className="text-sm md:text-md text-zinc-400 font-lexend max-w-md mx-auto">
+        <p className="text-sm md:text-base text-zinc-400 font-lexend max-w-md mx-auto">
           I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. 
         </p>
-        <p className="text-sm md:text-md text-zinc-400 font-lexend max-w-md mx-auto">
+        <p className="text-sm md:text-base text-zinc-400 font-lexend max-w-md mx-auto">
           Feel free to reach out through any of the platforms below!
         </p>
       </div>
@@ -32,7 +32,7 @@ function Contact() {
                 </div>
                 <div>
                   <p className="text-xs text-zinc-500 font-lexend uppercase tracking-widest">Email Me</p>
-                  <p className="text-xs md:text-md font-lexend">{details.email}</p>
+                  <p className="text-xs md:text-base font-lexend">{details.email}</p>
                 </div>
               </a>
 
@@ -42,7 +42,7 @@ function Contact() {
                 </div>
                 <div>
                   <p className="text-xs text-zinc-500 font-lexend uppercase tracking-widest">Call Me</p>
-                  <p className="text-xs md:text-md font-lexend">{details.phone}</p>
+                  <p className="text-xs md:text-base font-lexend">{details.phone}</p>
                 </div>
               </a>
             </div>
@@ -58,7 +58,7 @@ function Contact() {
                 className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
               >
                 <Linkedin className="w-8 h-8 text-zinc-400 group-hover:text-halloween-orange mb-2" />
-                <span className="text-sm font-lexend text-zinc-300">{details.socials[1].name}</span>
+                <span className="text-sm md:text-base font-lexend text-zinc-300">{details.socials[1].name}</span>
               </a>
 
               <a 
