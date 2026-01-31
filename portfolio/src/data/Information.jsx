@@ -13,7 +13,7 @@ export const details = {
   about: `Currently pursuing a Bachelor of Science in Information Technology at the 
           Polytechnic University of the Philippines. A passionate Full Stack Web/Software Developer 
           with knowledge in building dynamic and scalable applications. Currently exploring 
-          the realms of React and frontend design for enhanced user experiences.`,
+          the realms of Docker, React and frontend design for enhanced user experiences.`,
 
   address: {
     city: "Taguig City",
@@ -66,8 +66,8 @@ export const details = {
       id: 1,
       company: "Polytechnic University of the Philippines",
       role: "Full Stack Web Developer",
-      description: `Developed Laravel-based web application for Library Management System,
-                    using RFID and Barcode technologies to streamline students' activities and book management inside the library.
+      description: `Developed Laravel-based web application for Library Management System as for Capstone Project.
+                    Using RFID and Barcode technologies to streamline students' and faculties' activities and book management inside the library.
                     Utilizing PHP Laravel for backend development, MySQL for database management, and frontend framework like Tailwind CSS for styling.`,
       start_year: "September 2024",
       end_year: null,
@@ -76,8 +76,9 @@ export const details = {
       id: 2,
       company: "iEMINENCE, Inc.",
       role: "Full Stack Web Developer Intern",
-      description: `Contributed to the developement of web application for a parmapharmaceutical company.
-                    Implementing responsive UI forms, proper data validation, and seamless user experience.`,
+      description: `Contributed to the developement of web application for a pharmaceutical company.
+                    Implementing responsive UI forms, proper data validation, Exporting of reports through
+                    PDF and Excel and seamless user experience.`,
       start_year: "October 2025",
       end_year: "January 2026",
     },
@@ -99,7 +100,7 @@ export const details = {
       name: "CPU Process Scheduler",
       description: `A desktop application that simulates various CPU scheduling algorithms
                     such as FCFS, SJF, Priority Scheduling, and Round Robin. 
-                    Built using Java Swing for the user interface and Java for backend logic.`,
+                    Built using C++ as part of learning the fundamentals of operating systems, data structures, and algorithms.`,
       technologies: ["C++", "Visual Studio"],
       repository: "https://github.com/TyronBech/Process-Scheduling-Programs",
       type: "CLI Application",
