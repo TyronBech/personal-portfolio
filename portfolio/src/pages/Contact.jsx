@@ -74,10 +74,10 @@ function Contact() {
             {/* A "Status" indicator makes it feel live */}
             <div className="mt-8 flex items-center gap-2 text-zinc-500 text-sm font-lexend">
               <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${details.statuses.projects ? "bg-green-400" : "bg-red-400"} opacity-75`}></span>
+                <span className={`relative inline-flex rounded-full h-3 w-3 ${details.statuses.projects ? "bg-green-500" : "bg-red-500"}`}></span>
               </span>
-              Available for new projects
+              {details.statuses.projects ? "Available for new projects" : "Currently building something awesome"}
             </div>
           </div>
 

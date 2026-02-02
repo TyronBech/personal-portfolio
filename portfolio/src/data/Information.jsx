@@ -20,7 +20,10 @@ export const details = {
     country: "Philippines",
   },
 
-  status: "Available for work",
+  statuses: {
+    work: true,
+    projects: false,
+  },
 
   socials: [
     {
