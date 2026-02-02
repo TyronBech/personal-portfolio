@@ -4,7 +4,7 @@ import Github from "@/assets/svg/GitHub_Invertocat_White_Clearspace.svg";
 
 function Project() {
   return (
-    <div className="w-screen lg:min-h-screen py-10">
+    <div className="w-screen lg:min-h-screen py-16">
       <h1
         id="projects"
         className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-12 text-center"
