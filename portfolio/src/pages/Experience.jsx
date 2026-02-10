@@ -3,7 +3,7 @@ import { details } from "@/data/Information.jsx";
 
 function Experience() {
   return(
-    <div id="experience" className="overflow-hidden w-screen lg:py-24">
+    <div id="experience" className="overflow-hidden w-screen lg:py-10">
       <div className="grid md:grid-cols-2">
         {/* Left Side - Content */}
         <div className="flex items-center justify-center">

@@ -4,10 +4,8 @@ import profile from "@/assets/images/Self.png";
 function Main() {
   return (
     <div className="relative overflow-hidden w-screen lg:h-screen">
-
       {/* --- CONTAINER --- */}
       <div className="relative w-full h-full flex flex-col md:justify-start mt-10 lg:mt-0 lg:justify-center items-center lg:block">
-
         {/* 1. PROFILE PICTURE */}
         <div className="z-10 order-1 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2">
           <img
@@ -32,11 +30,17 @@ function Main() {
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/80 px-4 py-1.5 text-zinc-400 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                <span
+                  className={`animate-ping absolute inline-flex h-full w-full rounded-full ${details.statuses.work ? "bg-green-400" : "bg-red-500"} opacity-75`}
+                ></span>
+                <span
+                  className={`relative inline-flex rounded-full h-2 w-2 ${details.statuses.work ? "bg-green-500" : "bg-red-600"}`}
+                ></span>
               </span>
               <span className="tracking-wide text-xs font-lexend capitalize">
-                {details.status}
+                {details.statuses.work
+                  ? "Available for work"
+                  : "Currently employed"}
               </span>
             </div>
             {/* Role */}
@@ -55,7 +59,6 @@ function Main() {
         <div className="absolute inset-0 pointer-events-none">
           <div className="z-20 w-full h-1/2 absolute bottom-0 bg-linear-to-t from-rich-black via-rich-black/60 to-transparent"></div>
         </div>
-
       </div>
     </div>
   );

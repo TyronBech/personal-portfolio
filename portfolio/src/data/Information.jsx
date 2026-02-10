@@ -20,7 +20,10 @@ export const details = {
     country: "Philippines",
   },
 
-  status: "Available for work",
+  statuses: {
+    work: false,
+    projects: false,
+  },
 
   socials: [
     {
@@ -59,6 +62,7 @@ export const details = {
     "Python",
     "Git",
     "MySQL",
+    "Docker",
   ],
 
   experiences: [
