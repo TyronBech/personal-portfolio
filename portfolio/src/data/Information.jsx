@@ -21,7 +21,7 @@ export const details = {
   },
 
   statuses: {
-    work: true,
+    work: false,
     projects: false,
   },
 
@@ -62,6 +62,7 @@ export const details = {
     "Python",
     "Git",
     "MySQL",
+    "Docker",
   ],
 
   experiences: [
