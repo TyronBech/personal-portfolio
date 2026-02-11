@@ -21,7 +21,7 @@ export const details = {
   },
 
   statuses: {
-    work: false,
+    work: true,
     projects: false,
   },
 
