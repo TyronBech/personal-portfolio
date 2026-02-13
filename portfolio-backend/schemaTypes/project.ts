@@ -15,7 +15,7 @@ export default {
     { name: 'type', title: 'Project Type', type: 'string' }, // e.g. "CLI Application"
     { name: 'year', title: 'Year', type: 'number' },
     { 
-      name: 'image', 
+      name: 'project_image', 
       title: 'Project Image', 
       type: 'image',
       options: { hotspot: true }

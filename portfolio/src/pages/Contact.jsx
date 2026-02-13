@@ -1,7 +1,14 @@
-import { details } from "@/data/Information.jsx";
+import { usePortfolio } from "@/hooks/usePortfolio";
 import { Mail, Phone, Linkedin, Github, ArrowRight } from "lucide-react";
 
 function Contact() {
+
+  const { data, loading } = usePortfolio();
+
+  if (loading) {
+    return <div className="text-white">Loading...</div>;
+  }
+
   return (
     <div
       id="contact"
@@ -32,7 +39,7 @@ function Contact() {
 
             <div className="space-y-6">
               <a
-                href={`mailto:${details.email}`}
+                href={`mailto:${data?.email}`}
                 className="group flex items-center gap-4 text-zinc-300 hover:text-halloween-orange transition-colors"
               >
                 <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-halloween-orange/50 transition-all">
@@ -43,13 +50,13 @@ function Contact() {
                     Email Me
                   </p>
                   <p className="text-xs md:text-base font-lexend">
-                    {details.email}
+                    {data?.email}
                   </p>
                 </div>
               </a>
 
               <a
-                href={`tel:${details.phone}`}
+                href={`tel:${data?.phone}`}
                 className="group flex items-center gap-4 text-zinc-300 hover:text-halloween-orange transition-colors"
               >
                 <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-halloween-orange/50 transition-all">
@@ -60,7 +67,7 @@ function Contact() {
                     Call Me
                   </p>
                   <p className="text-xs md:text-base font-lexend">
-                    {details.phone}
+                    {data?.phone}
                   </p>
                 </div>
               </a>
@@ -74,24 +81,24 @@ function Contact() {
             </h3>
             <div className="grid sm:grid-cols-2 gap-4 mt-8">
               <a
-                href={details.socials[1].url}
+                href={data?.socials[1].url}
                 target="_blank"
                 className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
               >
                 <Linkedin className="w-8 h-8 text-zinc-400 group-hover:text-halloween-orange mb-2" />
                 <span className="text-sm md:text-base font-lexend text-zinc-300">
-                  {details.socials[1].name}
+                  {data?.socials[1].name}
                 </span>
               </a>
 
               <a
-                href={details.socials[0].url}
+                href={data?.socials[0].url}
                 target="_blank"
                 className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
               >
                 <Github className="w-8 h-8 text-zinc-400 group-hover:text-halloween-orange mb-2" />
                 <span className="text-sm font-lexend text-zinc-300">
-                  {details.socials[0].name}
+                  {data?.socials[0].name}
                 </span>
               </a>
             </div>
@@ -100,14 +107,14 @@ function Contact() {
             <div className="mt-8 flex items-center gap-2 text-zinc-500 text-sm font-lexend">
               <span className="relative flex h-2 w-2">
                 <span
-                  className={`animate-ping absolute inline-flex h-full w-full rounded-full ${details.statuses.projects ? "bg-green-400" : "bg-red-500"} opacity-75`}
+                  className={`animate-ping absolute inline-flex h-full w-full rounded-full ${data?.statuses.projects ? "bg-green-400" : "bg-red-500"} opacity-75`}
                 ></span>
                 <span
-                  className={`relative inline-flex rounded-full h-2 w-2 ${details.statuses.projects ? "bg-green-500" : "bg-red-600"}`}
+                  className={`relative inline-flex rounded-full h-2 w-2 ${data?.statuses.projects ? "bg-green-500" : "bg-red-600"}`}
                 ></span>
               </span>
               <span className="tracking-wide text-xs font-lexend capitalize">
-                {details.statuses.projects
+                {data?.statuses.projects
                   ? "Available for new projects"
                   : "Currently building something awesome"}
               </span>
