@@ -1,14 +1,6 @@
-import { usePortfolio } from "@/hooks/usePortfolio";
 import { Mail, Phone, Linkedin, Github, ArrowRight } from "lucide-react";
 
-function Contact() {
-
-  const { data, loading } = usePortfolio();
-
-  if (loading) {
-    return <div className="text-white">Loading...</div>;
-  }
-
+function Contact({ data }) {
   return (
     <div
       id="contact"

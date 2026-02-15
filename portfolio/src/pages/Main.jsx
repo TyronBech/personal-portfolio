@@ -1,14 +1,6 @@
-import { usePortfolio } from "@/hooks/usePortfolio";
 import profile from "@/assets/images/Self.png";
 
-function Main() {
-
-  const { data, loading } = usePortfolio();
-
-  if (loading) {
-    return <div className="text-white">Loading...</div>;
-  }
-
+function Main({ data }) {
   return (
     <div className="relative overflow-hidden w-screen lg:h-screen">
       {/* --- CONTAINER --- */}

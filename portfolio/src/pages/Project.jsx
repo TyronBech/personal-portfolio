@@ -1,16 +1,8 @@
 import SpotlightCard from "@/components/SpotlightCard.jsx";
-import { usePortfolio } from "@/hooks/usePortfolio";
 import { urlFor } from "@/data/sanity";
 import Github from "@/assets/svg/GitHub_Invertocat_White_Clearspace.svg";
 
-function Project() {
-
-  const { data, loading } = usePortfolio();
-
-  if (loading) {
-    return <div className="text-white">Loading...</div>;
-  }
-
+function Project({ data }) {
   return (
     <div className="w-screen lg:min-h-screen py-16">
       <h1

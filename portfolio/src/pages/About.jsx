@@ -1,14 +1,7 @@
 import Teddy from "@/assets/images/Teddy_Bear.png";
 import PUPT from "@/assets/svg/PUPT_Logo.svg";
-import { usePortfolio } from "@/hooks/usePortfolio";
 
-function About() {
-  const { data, loading } = usePortfolio();
-
-  if (loading) {
-    return <div className="text-white">Loading...</div>;
-  }
-
+function About({ data }) {
   return (
     <div id="about" className="overflow-hidden w-screen py-28">
       <div className="grid md:grid-cols-2 content-center">

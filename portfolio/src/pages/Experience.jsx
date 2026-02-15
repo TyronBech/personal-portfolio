@@ -1,14 +1,6 @@
 import Camera from "@/assets/images/Camera.png";
-import { usePortfolio } from "@/hooks/usePortfolio";
 
-function Experience() {
-
-  const { data, loading } = usePortfolio();
-
-  if (loading) {
-    return <div className="text-white">Loading...</div>;
-  }
-
+function Experience({ data }) {
   return(
     <div id="experience" className="overflow-hidden w-screen lg:py-10">
       <div className="grid md:grid-cols-2">

@@ -5,10 +5,20 @@
   /* This creates the utility class "font-main" */
   --font-main: "Archivo Black", sans-serif;
   --font-lexend: "Lexend", sans-serif;
+  --font-courier: "Courier New", Courier, monospace;
   --font-special-gothic: "Special Gothic Expanded One", sans-serif;
   --color-rich-black: #1f2022;
   --color-halloween-orange: #FC4C02;
 }
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.animate-fade-out {
+  animation: fadeOut 1s ease-out forwards;
 }
