@@ -1,7 +1,14 @@
 import Camera from "@/assets/images/Camera.png";
-import { details } from "@/data/Information.jsx";
+import { usePortfolio } from "@/hooks/usePortfolio";
 
 function Experience() {
+
+  const { data, loading } = usePortfolio();
+
+  if (loading) {
+    return <div className="text-white">Loading...</div>;
+  }
+
   return(
     <div id="experience" className="overflow-hidden w-screen lg:py-10">
       <div className="grid md:grid-cols-2">
@@ -12,7 +19,7 @@ function Experience() {
               Experience
             </h1>
             <p className="h-auto text-zinc-400 text-base md:text-lg leading-relaxed font-lexend">
-              {details.experiences.map((experience) => (
+              {data?.experiences.map((experience) => (
                 <div key={experience.id} className="mb-6">
                   <h2 className="text-lg tracking-wider md:text-2xl font-semibold">
                     <span className="text-halloween-orange">{experience.role}</span><span className="text-gray-300 font-semibold"> at {experience.company}</span>
