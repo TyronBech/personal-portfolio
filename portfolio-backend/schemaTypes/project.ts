@@ -3,6 +3,7 @@ export default {
   title: 'Project',
   type: 'document',
   fields: [
+    { name: 'id', title: 'ID', type: 'number' },
     { name: 'name', title: 'Project Name', type: 'string' },
     { name: 'description', title: 'Description', type: 'text' },
     { 

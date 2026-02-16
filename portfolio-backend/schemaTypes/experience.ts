@@ -3,6 +3,7 @@ export default {
   title: 'Work Experience',
   type: 'document',
   fields: [
+    { name: 'id', title: 'ID', type: 'number' },
     { name: 'company', title: 'Company Name', type: 'string' },
     { name: 'role', title: 'Job Role', type: 'string' },
     { name: 'description', title: 'Description', type: 'text' },
