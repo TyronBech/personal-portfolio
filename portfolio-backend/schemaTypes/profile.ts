@@ -12,6 +12,13 @@ export default {
     { name: 'phone', title: 'Phone', type: 'string' },
     { name: 'message', title: 'Short Message', type: 'text' },
     { name: 'about', title: 'About Me', type: 'text' },
+    { name: 'profile_image', title: 'Profile Image', type: 'image', options: { hotspot: true } },
+
+    // --- About & Experience Images ---
+    { name: 'about_image', title: 'About Image', type: 'image', options: { hotspot: true } },
+    { name: 'about_image_alt', title: 'About Image Alt Text', type: 'string' },
+    { name: 'experience_image', title: 'Experience Image', type: 'image', options: { hotspot: true } },
+    { name: 'experience_image_alt', title: 'Experience Image Alt Text', type: 'string' },
     
     // --- Location ---
     {
