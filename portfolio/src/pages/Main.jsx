@@ -1,4 +1,5 @@
-import profile from "@/assets/images/Self.png";
+import React from "react";
+import { urlFor } from "@/data/sanity";
 
 function Main({ data }) {
   return (
@@ -8,8 +9,8 @@ function Main({ data }) {
         {/* 1. PROFILE PICTURE */}
         <div className="z-10 order-1 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2">
           <img
-            src={profile}
-            className="w-48 md:w-72 lg:w-100 xl:w-118 aspect-square lg:aspect-auto object-cover rounded-full lg:rounded-t-[3rem] lg:rounded-b-none shadow-2xl lg:shadow-none"
+            src={urlFor(data?.profile_image).url()}
+            className="w-48 md:w-72 lg:w-100 xl:w-118 aspect-square text-white lg:aspect-auto object-cover rounded-full lg:rounded-t-[3rem] lg:rounded-b-none shadow-2xl lg:shadow-none"
             alt="Profile Picture"
           />
         </div>

@@ -1,5 +1,5 @@
-import Teddy from "@/assets/images/Teddy_Bear.png";
 import PUPT from "@/assets/svg/PUPT_Logo.svg";
+import { urlFor } from "@/data/sanity";
 
 function About({ data }) {
   return (
@@ -7,7 +7,7 @@ function About({ data }) {
       <div className="grid md:grid-cols-2 content-center">
         {/* Left Side - Image */}
         <div className="hidden md:flex md:items-center md:justify-center">
-          <img src={Teddy} alt="Teddy Bear" className="w-1/2 rounded-3xl" />
+          <img src={urlFor(data?.about_image).url()} alt={data?.about_image_alt} className="w-1/2 rounded-3xl text-white" />
         </div>
         {/* Right Side - Text Content */}
         <div className="flex items-center justify-center">
