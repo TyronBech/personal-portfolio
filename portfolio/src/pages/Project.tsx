@@ -1,8 +1,13 @@
-import SpotlightCard from "@/components/SpotlightCard.jsx";
-import { details } from "@/data/Information.jsx";
+import SpotlightCard from "@/components/SpotlightCard";
+import { urlFor } from "@/data/sanity";
 import Github from "@/assets/svg/GitHub_Invertocat_White_Clearspace.svg";
+import type { PortfolioData } from "@/types/portfolio";
 
-function Project() {
+interface ProjectProps {
+  data: PortfolioData | null;
+}
+
+function Project({ data }: ProjectProps): React.JSX.Element {
   return (
     <div className="w-screen lg:min-h-screen py-16">
       <h1
@@ -14,16 +19,15 @@ function Project() {
 
       {/* Projects Grid */}
       <div className="grid lg:grid-cols-3 gap-8 px-8 md:px-16">
-        {details.projects.map((project) => (
+        {data?.projects.map((project) => (
           <SpotlightCard
             key={project.id}
-            // 5. ADDED: h-full (Ensures all cards in a row are the same height)
             className="w-full max-w-lg mx-auto h-full"
             spotlightColor="rgba(252, 76, 2, 0.2)"
           >
             <div className="flex flex-col h-full">
               <img
-                src={project.image}
+                src={urlFor(project.project_image).url()}
                 alt={project.name}
                 className="w-[95%] rounded-xl mx-auto mt-2 object-cover"
               />

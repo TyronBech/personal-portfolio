@@ -1,6 +1,6 @@
-function Header() {
+function Header(): React.JSX.Element {
   return (
-    <header className="lg:absolute z-100 w-full h-20 lg:pt-8 flex items-center justify-end bg-linear-to-b from-rich-black/80 via-rich-black/50 to-transparent">
+    <header className="lg:fixed z-100 w-full h-20 lg:pt-8 flex items-center justify-end bg-linear-to-b from-rich-black/90 via-rich-black/60 to-transparent">
       <nav className="relative w-full h-full flex items-center justify-center">
         <ul className="flex gap-6 sm:gap-8 md:gap-12 lg:gap-16 text-white font-lexend tracking-wider text-sm">
           {["About", "Experience", "Projects", "Contact"].map((item) => (
