@@ -1,6 +1,11 @@
-import ScrollVelocity from "@/components/ScrollVelocity.jsx";
+import ScrollVelocity from "@/components/ScrollVelocity";
+import type { PortfolioData } from "@/types/portfolio";
 
-function Skill({ data }) {
+interface SkillProps {
+  data: PortfolioData | null;
+}
+
+function Skill({ data }: SkillProps): React.JSX.Element {
   const skillsOneLine = data?.skills.join("\u00A0•\u00A0") + "\u00A0•\u00A0";
   return (
     <div className="w-full text-base pt-24 pb-12">

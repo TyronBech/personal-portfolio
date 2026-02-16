@@ -1,13 +1,18 @@
 import PUPT from "@/assets/svg/PUPT_Logo.svg";
 import { urlFor } from "@/data/sanity";
+import type { PortfolioData } from "@/types/portfolio";
 
-function About({ data }) {
+interface AboutProps {
+  data: PortfolioData | null;
+}
+
+function About({ data }: AboutProps): React.JSX.Element {
   return (
     <div id="about" className="overflow-hidden w-screen py-28">
       <div className="grid md:grid-cols-2 content-center">
         {/* Left Side - Image */}
         <div className="hidden md:flex md:items-center md:justify-center">
-          <img src={urlFor(data?.about_image).url()} alt={data?.about_image_alt} className="w-1/2 rounded-3xl text-white" />
+          <img src={urlFor(data!.about_image).url()} alt={data?.about_image_alt} className="w-1/2 rounded-3xl text-white" />
         </div>
         {/* Right Side - Text Content */}
         <div className="flex items-center justify-center">

@@ -1,8 +1,13 @@
-import SpotlightCard from "@/components/SpotlightCard.jsx";
+import SpotlightCard from "@/components/SpotlightCard";
 import { urlFor } from "@/data/sanity";
 import Github from "@/assets/svg/GitHub_Invertocat_White_Clearspace.svg";
+import type { PortfolioData } from "@/types/portfolio";
 
-function Project({ data }) {
+interface ProjectProps {
+  data: PortfolioData | null;
+}
+
+function Project({ data }: ProjectProps): React.JSX.Element {
   return (
     <div className="w-screen lg:min-h-screen py-16">
       <h1

@@ -1,6 +1,11 @@
-import { Mail, Phone, Linkedin, Github, ArrowRight } from "lucide-react";
+import { Mail, Phone, Linkedin, Github } from "lucide-react";
+import type { PortfolioData } from "@/types/portfolio";
 
-function Contact({ data }) {
+interface ContactProps {
+  data: PortfolioData | null;
+}
+
+function Contact({ data }: ContactProps): React.JSX.Element {
   return (
     <div
       id="contact"

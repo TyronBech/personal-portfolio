@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import '../index.css'
 
-const CameraLoading = ({ running = true }) => {
-  const [ms, setMs] = useState(0);
-  const [shouldCount, setShouldCount] = useState(true);
+interface CameraLoadingProps {
+  running?: boolean;
+}
+
+const CameraLoading: React.FC<CameraLoadingProps> = ({ running = true }) => {
+  const [ms, setMs] = useState<number>(0);
+  const [shouldCount, setShouldCount] = useState<boolean>(true);
 
   useEffect(() => {
     if (!running) {

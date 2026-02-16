@@ -3,18 +3,18 @@ import Header from "@/pages/Header";
 import Main from "@/pages/Main";
 import Skill from "@/pages/Skill";
 import About from "@/pages/About";
-import Experience  from "@/pages/Experience";
+import Experience from "@/pages/Experience";
 import Project from "@/pages/Project";
 import Contact from "@/pages/Contact";
 import CameraLoading from "@/components/CameraLoading";
 import { usePortfolio } from "@/hooks/usePortfolio";
 
-function App() {
+function App(): React.JSX.Element {
   const { data, loading } = usePortfolio();
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay, setShowOverlay] = useState<boolean>(true);
 
   return (
-    <div className="relative overflow-hidden bg-rich-black">
+    <div className="relative overflow-hidden bg-rich-black min-h-screen">
       {showOverlay && (
         <>
           <div

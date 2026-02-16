@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { client } from "@/data/sanity";
+import type { PortfolioData } from "@/types/portfolio";
 
-export const usePortfolio = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+export const usePortfolio = (): { data: PortfolioData | null; loading: boolean } => {
+  const [data, setData] = useState<PortfolioData | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {

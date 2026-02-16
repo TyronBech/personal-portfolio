@@ -1,7 +1,12 @@
 import Camera from "@/assets/images/Camera.png";
 import { urlFor } from "@/data/sanity";
+import type { PortfolioData } from "@/types/portfolio";
 
-function Experience({ data }) {
+interface ExperienceProps {
+  data: PortfolioData | null;
+}
+
+function Experience({ data }: ExperienceProps): React.JSX.Element {
   return(
     <div id="experience" className="overflow-hidden w-screen lg:py-10">
       <div className="grid md:grid-cols-2">
@@ -30,7 +35,7 @@ function Experience({ data }) {
         </div>
         {/* Right Side - Image */}
         <div className="hidden md:flex items-center justify-center">
-          <img src={urlFor(data?.experience_image).url()} alt={data?.experience_image_alt} className="w-2/3 rounded-3xl" style={{ filter: 'saturate(2.35) sepia(0.2) hue-rotate(-10deg) brightness(0.8) drop-shadow(0 30px 12px rgba(0,0,0,0.2)) drop-shadow(0 8px 18px rgba(0,0,0,0.15))' }} />
+          <img src={urlFor(data!.experience_image).url()} alt={data?.experience_image_alt} className="w-2/3 rounded-3xl" style={{ filter: 'saturate(2.35) sepia(0.2) hue-rotate(-10deg) brightness(0.8) drop-shadow(0 30px 12px rgba(0,0,0,0.2)) drop-shadow(0 8px 18px rgba(0,0,0,0.15))' }} />
         </div>
       </div>
     </div>
