@@ -33,7 +33,7 @@ interface VelocityMapping {
 
 interface ScrollVelocityProps {
   scrollContainerRef?: RefObject<HTMLElement | null>;
-  texts?: string[];
+  texts?: ReactNode[]; // Changed from string[] to ReactNode[]
   velocity?: number;
   className?: string;
   damping?: number;

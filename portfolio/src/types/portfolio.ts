@@ -61,7 +61,10 @@ export interface PortfolioData {
   statuses: Statuses;
   socials: Social[];
   school: School;
-  skills: string[];
+  skills: {
+    name: string;
+    icon: SanityImageSource;
+  }[];
   experiences: Experience[];
   projects: Project[];
 }

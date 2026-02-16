@@ -77,7 +77,15 @@ export default {
       name: 'skills',
       title: 'Skills',
       type: 'array',
-      of: [{ type: 'string' }]
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'name', title: 'Skill Name', type: 'string' },
+            { name: 'icon', title: 'Skill Icon', type: 'image', options: { hotspot: true } }
+          ]
+        }
+      ]
     }
   ]
 }
