@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from "react";
 import '../index.css'
 
-const CameraLoading = () => {
+const CameraLoading = ({ running = true }) => {
   const [ms, setMs] = useState(0);
+  const [shouldCount, setShouldCount] = useState(true);
 
   useEffect(() => {
+    if (!running) {
+      const timeout = setTimeout(() => {
+        setShouldCount(false);
+      }, 1500);
+      return () => clearTimeout(timeout);
+    }
+  }, [running]);
+
+  useEffect(() => {
+    if (!shouldCount) return;
     const interval = setInterval(() => {
       setMs((m) => m + 10);
     }, 10);
     return () => clearInterval(interval);
-  }, []);
+  }, [shouldCount]);
 
   const mins = String(Math.floor(ms / 60000)).padStart(2, '0');
   const secs = String(Math.floor((ms % 60000) / 1000)).padStart(2, '0');

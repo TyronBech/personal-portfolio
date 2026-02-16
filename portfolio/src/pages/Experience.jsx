@@ -11,12 +11,12 @@ function Experience({ data }) {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-6">
               Experience
             </h1>
-            <p className="h-auto text-zinc-400 text-base md:text-lg leading-relaxed font-lexend">
+            <div className="h-auto text-zinc-400 text-base md:text-lg leading-relaxed font-lexend">
               {data?.experiences.map((experience) => (
                 <div key={experience.id} className="mb-6">
-                  <h2 className="text-lg tracking-wider md:text-2xl font-semibold">
+                  <span className="text-lg tracking-wider md:text-2xl font-semibold">
                     <span className="text-halloween-orange">{experience.role}</span><span className="text-gray-300 font-semibold"> at {experience.company}</span>
-                  </h2>
+                  </span>
                   <p className="text-zinc-400 text-sm md:text-base tracking-wide leading-relaxed font-lexend">
                     {experience.description}
                   </p>
@@ -25,7 +25,7 @@ function Experience({ data }) {
                   </p>
                 </div>
               ))}
-            </p>
+            </div>
           </div>
         </div>
         {/* Right Side - Image */}

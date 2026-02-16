@@ -21,7 +21,7 @@ function App() {
             className={`fixed top-0 left-0 z-150 pointer-events-none w-screen h-screen ${!loading ? 'animate-fade-out' : ''}`}
             onAnimationEnd={() => setShowOverlay(false)}
           >
-            <CameraLoading />
+            <CameraLoading running={loading} />
           </div>
           <div className={`fixed top-0 left-0 z-130 bg-rich-black backdrop-blur-2xl w-screen h-screen ${!loading ? 'animate-fade-out' : ''}`}></div>
         </>
