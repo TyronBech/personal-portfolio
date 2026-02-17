@@ -16,9 +16,9 @@ function Skill({ data }: SkillProps): React.JSX.Element {
   // Convert skills to a layout that fits nicely inside the velocity scroll.
   // We used to join strings, now we render a flex row.
   const skillsList = (
-    <div className="flex items-center gap-8 m-0 p-0 mr-8 h-28"> 
+    <div className="flex items-center gap-4 md:gap-8 m-0 p-0 mr-4 md:mr-8 h-28"> 
       {data.skills.map((skill, index) => (
-        <div key={index} className="flex items-center justify-center min-w-max gap-8">
+        <div key={index} className="flex items-center justify-center min-w-max gap-4 md:gap-8">
           <AnimatePresence mode="wait">
             {isHovered ? (
               <motion.div
@@ -27,13 +27,13 @@ function Skill({ data }: SkillProps): React.JSX.Element {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, ease: "easeIn" }}
-                className="w-16 h-16 flex items-center justify-center"
+                className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"
               >
                 {skill.icon && (
                   <img
                     src={urlFor(skill.icon).url()}
                     alt={skill.name}
-                    className="w-full h-full object-contain"
+                    className="md:w-full h-full object-contain"
                   />
                 )}
               </motion.div>
@@ -44,7 +44,7 @@ function Skill({ data }: SkillProps): React.JSX.Element {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: "easeIn" }}
-                className="flex items-center gap-8"
+                className="flex items-center gap-4 md:gap-8"
               >
                 <span className="text-inherit">{skill.name}</span>
                 <span className="text-zinc-400 opacity-30">•</span>
@@ -65,7 +65,7 @@ function Skill({ data }: SkillProps): React.JSX.Element {
       <ScrollVelocity
         texts={[skillsList]}
         velocity={70}
-        className="text-zinc-700 text-5xl tracking-tight font-lexend font-bold"
+        className="text-zinc-700 text-3xl md:text-5xl tracking-tight font-lexend font-bold"
       />
     </div>
   );
