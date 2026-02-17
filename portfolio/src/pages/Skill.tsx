@@ -23,9 +23,9 @@ function Skill({ data }: SkillProps): React.JSX.Element {
             {isHovered ? (
               <motion.div
                 key="icon"
-                initial={{ opacity: 0, scale: 0.5, rotateX: 90 }}
-                animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-                exit={{ opacity: 0, scale: 0.5, rotateX: -90 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, ease: "easeIn" }}
                 className="w-16 h-16 flex items-center justify-center"
               >
