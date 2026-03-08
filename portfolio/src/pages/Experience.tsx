@@ -16,18 +16,25 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-6">
               Experience
             </h1>
-            <div className="h-auto text-zinc-400 text-base md:text-lg leading-relaxed font-lexend">
+            <div className="relative border-l border-zinc-700 ml-3 md:ml-4 mt-6">
               {data?.experiences.map((experience) => (
-                <div key={experience.id} className="mb-6">
-                  <span className="text-lg tracking-wider md:text-2xl font-semibold">
-                    <span className="text-halloween-orange">{experience.role}</span><span className="text-gray-300 font-semibold"> at {experience.company}</span>
-                  </span>
-                  <p className="text-zinc-400 text-sm md:text-base tracking-wide leading-relaxed font-lexend">
-                    {experience.description}
-                  </p>
-                  <p className="text-zinc-200 text-sm md:text-base tracking-wide leading-relaxed font-lexend">
+                <div key={experience.id} className="mb-10 ml-6 md:ml-8">
+                  <span className="absolute flex items-center justify-center w-3 h-3 bg-halloween-orange rounded-full -left-[6.5px] ring-1 ring-zinc-200 mt-2"></span>
+                  <p className="mb-2 text-sm font-normal leading-none text-zinc-500 font-lexend">
                     {experience.start_year} - {experience.end_year ?? "Present"}
                   </p>
+                  <h3 className="text-lg tracking-wide md:text-xl font-bold mb-3">
+                    <span className="text-halloween-orange">{experience.role}</span>
+                    <span className="text-gray-300"> at {experience.company}</span>
+                  </h3>
+                  <ul className="space-y-2 text-zinc-400 text-sm md:text-base tracking-normal leading-5.5 font-lexend">
+                    {experience.description.map((item, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-halloween-orange mr-3 text-lg leading-none mt-0.5">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
