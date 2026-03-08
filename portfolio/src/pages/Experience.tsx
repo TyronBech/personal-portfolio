@@ -6,7 +6,23 @@ interface ExperienceProps {
   data: PortfolioData | null;
 }
 
+const parseStartDate = (dateStr: string): Date => {
+  const months: Record<string, number> = {
+    January: 0, February: 1, March: 2, April: 3,
+    May: 4, June: 5, July: 6, August: 7,
+    September: 8, October: 9, November: 10, December: 11,
+  };
+  const [month, year] = dateStr.split(' ');
+  return new Date(parseInt(year), months[month] ?? 0);
+};
+
 function Experience({ data }: ExperienceProps): React.JSX.Element {
+  const sortedExperiences = data?.experiences
+    ? [...data.experiences].sort(
+        (a, b) => parseStartDate(b.start_date).getTime() - parseStartDate(a.start_date).getTime()
+      )
+    : [];
+
   return(
     <div id="experience" className="overflow-hidden w-screen lg:py-10">
       <div className="grid md:grid-cols-2">
@@ -17,7 +33,7 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
               Experience
             </h1>
             <div className="relative border-l border-zinc-700 ml-3 md:ml-4 mt-6">
-              {data?.experiences.map((experience) => (
+              {sortedExperiences.map((experience) => (
                 <div key={experience.id} className="mb-10 ml-6 md:ml-8">
                   <span className="absolute flex items-center justify-center w-3 h-3 bg-halloween-orange rounded-full -left-[6.5px] ring-1 ring-zinc-200 mt-2"></span>
                   <p className="mb-2 text-sm font-normal leading-none text-zinc-500 font-lexend">
