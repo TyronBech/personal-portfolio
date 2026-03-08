@@ -28,7 +28,12 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
                     <span className="text-gray-300"> at {experience.company}</span>
                   </h3>
                   <ul className="space-y-2 text-zinc-400 text-sm md:text-base tracking-normal leading-5.5 font-lexend">
-                    {experience.description.map((item, index) => (
+                    {(Array.isArray(experience.description)
+                      ? experience.description
+                      : experience.description
+                        ? [experience.description]
+                        : []
+                    ).map((item, index) => (
                       <li key={index} className="flex items-start">
                         <span className="text-halloween-orange mr-3 text-lg leading-none mt-0.5">•</span>
                         <span>{item}</span>
