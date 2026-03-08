@@ -7,7 +7,7 @@ export default {
     { name: 'company', title: 'Company Name', type: 'string' },
     { name: 'role', title: 'Job Role', type: 'string' },
     { name: 'description', title: 'Description', type: 'array', of: [{ type: 'string' }] },
-    { name: 'start_year', title: 'Start Date', type: 'string' },
+    { name: 'start_date', title: 'Start Date', type: 'string' },
     { name: 'end_year', title: 'End Date', type: 'string' }
   ]
 }
