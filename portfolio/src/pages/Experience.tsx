@@ -21,7 +21,7 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
                 <div key={experience.id} className="mb-10 ml-6 md:ml-8">
                   <span className="absolute flex items-center justify-center w-3 h-3 bg-halloween-orange rounded-full -left-[6.5px] ring-1 ring-zinc-200 mt-2"></span>
                   <p className="mb-2 text-sm font-normal leading-none text-zinc-500 font-lexend">
-                    {experience.start_year} - {experience.end_year ?? "Present"}
+                    {experience.start_date} - {experience.end_year ?? "Present"}
                   </p>
                   <h3 className="text-lg tracking-wide md:text-xl font-bold mb-3">
                     <span className="text-halloween-orange">{experience.role}</span>
