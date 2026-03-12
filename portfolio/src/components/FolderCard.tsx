@@ -9,13 +9,13 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
   return (
-    <div className="group relative w-full h-full min-h-[28.125rem] bg-[#18181b] rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col border border-zinc-800/50">
+    <div className="group relative w-full h-full items-center min-h-112.5 bg-[#18181b] rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col border p-2 border-zinc-800/50">
       {/* Background Image Area */}
-      <div className="relative w-[calc(100%-10px)] aspect-video shrink-0 bg-neutral-900 rounded-t-3xl overflow-hidden">
+      <div className="relative items-center w-full aspect-video shrink-0 bg-neutral-900 rounded-t-3xl overflow-hidden">
         <img
           src={urlFor(project.project_image).url()}
           alt={project.name}
-          className="overflow-hidden w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-100"
+          className="overflow-hidden m-auto w-[calc(100%-2px)] h-full object-cover opacity-90"
         />
         <div className="absolute inset-0 bg-linear-to-t from-[#18181b]/50 via-transparent to-transparent opacity-70" />
 
@@ -28,7 +28,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
 
         {/* Folder tab SVG overlay positioned exactly at the bottom of the image area */}
         <svg
-          className="absolute -bottom-px -left-px w-[calc(100%+2px)] h-12 md:h-16 text-[#18181b] z-20 pointer-events-none drop-shadow-[0_-5px_5px_rgba(0,0,0,0.5)]"
+          className="absolute bottom-0 left-0 w-full h-12 md:h-16 text-[#18181b] z-20 pointer-events-none drop-shadow-[0_-5px_5px_rgba(0,0,0,0.5)]"
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
@@ -45,7 +45,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
         <div className="flex flex-col grow w-full mt-2">
           {/* Header - Name and Year */}
           <div className="flex justify-between items-start mb-4">
-            <p className="text-white text-lg font-bold leading-tight tracking-wide font-lexend break-words max-w-[75%]">
+            <p className="text-white text-lg font-bold leading-tight tracking-wide font-lexend wrap-break-word max-w-[75%]">
               {project.name}
             </p>
             <p className="text-zinc-500 text-xs font-lexend tracking-widest whitespace-nowrap mt-1">
@@ -54,10 +54,16 @@ const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
           </div>
 
           {/* Description Area */}
-          <div className="mb-8">
+          <div className="mb-8 relative group/desc">
             <p className="text-zinc-400 text-sm font-lexend leading-relaxed line-clamp-4">
               {project.description}
             </p>
+            {/* Full description popover on hover */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full opacity-0 invisible group-hover/desc:opacity-100 group-hover/desc:visible bg-rich-black z-30 transition-all duration-300 p-3 -m-3 rounded-lg shadow-2xl border border-halloween-orange/60">
+              <p className="text-zinc-300 text-sm font-lexend leading-relaxed">
+                {project.description}
+              </p>
+            </div>
           </div>
 
           {/* Footer area pushed to bottom */}

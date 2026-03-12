@@ -1,7 +1,6 @@
 import FolderCard from "@/components/FolderCard";
 import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -50,16 +49,6 @@ const responsive = {
 };
 
 function Project({ data }: ProjectProps): React.JSX.Element {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
-
   return (
     <div id="projects" className="w-full lg:min-h-screen items-center justify-center flex flex-col py-20 overflow-hidden">
       <h1
@@ -73,13 +62,13 @@ function Project({ data }: ProjectProps): React.JSX.Element {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="w-full max-w-7xl mx-auto px-4 md:px-8"
+        className="w-full max-w-350 mx-auto px-4 md:px-8"
       >
         {data?.projects && data.projects.length > 0 && (
           <Carousel
             responsive={responsive}
             infinite={true}
-            autoPlay={!prefersReducedMotion}
+            autoPlay={true}
             autoPlaySpeed={4000}
             keyBoardControl={true}
             customTransition="transform 500ms ease-in-out"
@@ -91,8 +80,8 @@ function Project({ data }: ProjectProps): React.JSX.Element {
             renderDotsOutside={true}
             dotListClass="custom-dot-list-style"
           >
-            {data.projects.map((project) => (
-              <motion.div key={project.id} variants={cardVariants} className="h-full w-full mx-auto">
+            {data.projects.map((project, index) => (
+              <motion.div key={index} variants={cardVariants} className="h-full w-full mx-auto">
                 <FolderCard project={project} />
               </motion.div>
             ))}
