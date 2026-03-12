@@ -1,7 +1,8 @@
 import FolderCard from "@/components/FolderCard";
-import Github from "@/assets/svg/GitHub_Invertocat_White_Clearspace.svg";
 import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 interface ProjectProps {
   data: PortfolioData | null;
@@ -29,9 +30,27 @@ const cardVariants = {
   }
 };
 
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 768 },
+    items: 2,
+    slidesToSlide: 1,
+  },
+  mobile: {
+    breakpoint: { max: 768, min: 0 },
+    items: 1,
+    slidesToSlide: 1,
+  },
+};
+
 function Project({ data }: ProjectProps): React.JSX.Element {
   return (
-    <div id="projects" className="w-screen lg:min-h-screen items-center justify-center flex flex-col">
+    <div id="projects" className="w-full lg:min-h-screen items-center justify-center flex flex-col py-20 overflow-hidden">
       <h1
         className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-10"
       >
@@ -43,13 +62,31 @@ function Project({ data }: ProjectProps): React.JSX.Element {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 px-6"
+        className="w-full max-w-350 mx-auto px-4 md:px-8"
       >
-        {data?.projects.map((project, index) => (
-          <motion.div key={index} variants={cardVariants} className="h-full">
-            <FolderCard project={project} />
-          </motion.div>
-        ))}
+        {data?.projects && data.projects.length > 0 && (
+          <Carousel
+            responsive={responsive}
+            infinite={true}
+            autoPlay={true}
+            autoPlaySpeed={4000}
+            keyBoardControl={true}
+            customTransition="transform 500ms ease-in-out"
+            transitionDuration={500}
+            containerClass="carousel-container py-4 pb-16"
+            removeArrowOnDeviceType={[]}
+            itemClass="px-3 pb-8 pt-4"
+            showDots={true}
+            renderDotsOutside={true}
+            dotListClass="custom-dot-list-style"
+          >
+            {data.projects.map((project, index) => (
+              <motion.div key={index} variants={cardVariants} className="h-full w-full mx-auto">
+                <FolderCard project={project} />
+              </motion.div>
+            ))}
+          </Carousel>
+        )}
       </motion.div>
     </div>
   );
