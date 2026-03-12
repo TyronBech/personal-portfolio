@@ -9,9 +9,9 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
   return (
-    <div className="group relative w-full h-full min-h-112.5 bg-[#18181b] rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col border border-zinc-800/50">
+    <div className="group relative w-full h-full min-h-[28.125rem] bg-[#18181b] rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col border border-zinc-800/50">
       {/* Background Image Area */}
-      <div className="relative items-center w-[calc(100%-10px)] aspect-video shrink-0 bg-neutral-900 rounded-t-3xl overflow-hidden">
+      <div className="relative w-[calc(100%-10px)] aspect-video shrink-0 bg-neutral-900 rounded-t-3xl overflow-hidden">
         <img
           src={urlFor(project.project_image).url()}
           alt={project.name}
@@ -45,7 +45,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
         <div className="flex flex-col grow w-full mt-2">
           {/* Header - Name and Year */}
           <div className="flex justify-between items-start mb-4">
-            <p className="text-white text-lg font-bold leading-tight tracking-wide font-lexend wrap-break-word max-w-[75%]">
+            <p className="text-white text-lg font-bold leading-tight tracking-wide font-lexend break-words max-w-[75%]">
               {project.name}
             </p>
             <p className="text-zinc-500 text-xs font-lexend tracking-widest whitespace-nowrap mt-1">
