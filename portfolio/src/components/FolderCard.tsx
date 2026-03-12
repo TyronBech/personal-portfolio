@@ -1,7 +1,7 @@
 import React from "react";
 import { urlFor } from "@/data/sanity";
 import { Project } from "@/types/portfolio";
-import Icon from "@/assets/svg/GitHub_Invertocat_White_Clearspace.svg"
+import Icon from "@/assets/svg/GitHub_Invertocat_White_Clearspace.svg";
 
 interface FolderCardProps {
   project: Project;
@@ -9,57 +9,71 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
   return (
-    <div className="group relative w-full max-w-lg bg-neutral-900 rounded-4xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.02] flex flex-col justify-center items-center h-full min-h-112.5">
+    <div className="group relative w-full h-full items-center min-h-112.5 bg-[#18181b] rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col border p-2 border-zinc-800/50">
       {/* Background Image Area */}
-      <div className="relative w-full h-64 shrink-0">
+      <div className="relative items-center w-full aspect-video shrink-0 bg-neutral-900 rounded-t-3xl overflow-hidden">
         <img
           src={urlFor(project.project_image).url()}
           alt={project.name}
-          className="w-full p-2 rounded-4xl object-cover opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+          className="overflow-hidden m-auto w-[calc(100%-2px)] h-full object-cover opacity-90"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent rounded-4xl mx-2" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#18181b]/50 via-transparent to-transparent opacity-70" />
 
         {/* Project Type on Top Right */}
-        <div className="absolute top-6 right-6 text-right z-10">
-          <span className="inline-block px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm border border-black/30 text-xs font-medium text-white uppercase tracking-wider">
+        <div className="absolute top-4 right-4 z-10">
+          <span className="inline-block px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-semibold text-white uppercase tracking-widest shadow-lg">
             {project.type}
           </span>
         </div>
+
+        {/* Folder tab SVG overlay positioned exactly at the bottom of the image area */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-12 md:h-16 text-[#18181b] z-20 pointer-events-none drop-shadow-[0_-5px_5px_rgba(0,0,0,0.5)]"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          {/* Smooth custom folder tab path */}
+          <path
+            d="M 0,105 L 0,0 C 20,0 35,0 42,0 C 48,0 52,70 60,70 L 100,70 L 100,105 Z"
+            className="fill-current"
+          />
+        </svg>
       </div>
 
-      {/* Folder Content Shape - Tab on Left */}
-      <div
-        className="relative -mt-40 md:-mt-28 w-full bg-[#18181b] z-20 grow flex flex-col"
-        style={{
-          // Shape: Starts at top-left (0,0), goes right to 45% width, slopes down to 55% width at 15% height, then to right edge
-          clipPath: "polygon(0 0, 45% 0, 55% 15%, 100% 15%, 100% 100%, 0 100%)",
-          paddingTop: "0.5rem",
-        }}
-      >
-        <div className="flex flex-col grow px-6 pb-6 pt-2">
+      {/* Main Folder Body */}
+      <div className="relative w-full z-20 grow bg-[#18181b] flex flex-col pt-2 px-6 pb-6 rounded-b-3xl -mt-px">
+        <div className="flex flex-col grow w-full mt-2">
           {/* Header - Name and Year */}
-          <div className="h-12 items-center mb-6">
-            <p className="text-white text-md font-bold leading-tight tracking-wide font-lexend wrap-break-word max-w-[45%] mb-1">
+          <div className="flex justify-between items-start mb-4">
+            <p className="text-white text-lg font-bold leading-tight tracking-wide font-lexend wrap-break-word max-w-[75%]">
               {project.name}
             </p>
-            <p className="text-zinc-500 text-xs font-lexend tracking-wide">
+            <p className="text-zinc-500 text-xs font-lexend tracking-widest whitespace-nowrap mt-1">
               {project.year}
             </p>
           </div>
+
           {/* Description Area */}
-          <div className="mb-8">
-            <p className="text-zinc-400 text-sm font-lexend leading-relaxed">
+          <div className="mb-8 relative group/desc">
+            <p className="text-zinc-400 text-sm font-lexend leading-relaxed line-clamp-4">
               {project.description}
             </p>
+            {/* Full description popover on hover */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full opacity-0 invisible group-hover/desc:opacity-100 group-hover/desc:visible bg-rich-black z-30 transition-all duration-300 p-3 -m-3 rounded-lg shadow-2xl border border-halloween-orange/60">
+              <p className="text-zinc-300 text-sm font-lexend leading-relaxed">
+                {project.description}
+              </p>
+            </div>
           </div>
+
           {/* Footer area pushed to bottom */}
-          <div className="mt-auto flex flex-col gap-4">
+          <div className="mt-auto flex flex-col gap-5">
             {/* Technologies Tags */}
-            <div className="flex capi flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2">
               {project.technologies.slice(0, 5).map((tech, i) => (
                 <span
                   key={i}
-                  className="px-2.5 py-1 text-[10px] font-bold text-zinc-300 border border-zinc-700 rounded bg-[#1f1f22] capitalize tracking-wider"
+                  className="px-2.5 py-1 text-[10px] font-bold text-zinc-300 border border-zinc-700/50 rounded bg-zinc-800/50 capitalize tracking-wider"
                 >
                   {tech}
                 </span>
@@ -71,10 +85,10 @@ const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
               href={project.repository}
               target="_blank"
               rel="noopener noreferrer"
-              className="group/btn flex items-center justify-center gap-2 w-full py-2.5 bg-[#18181b] border border-zinc-700/50 hover:border-halloween-orange hover:bg-halloween-orange/10 rounded-lg transition-all duration-300"
+              className="group/btn flex items-center justify-center gap-2 w-full py-3 bg-zinc-900 border border-zinc-700/50 hover:border-halloween-orange hover:bg-halloween-orange/10 rounded-xl transition-all duration-300"
             >
-              <img src={Icon} alt="GitHub Icon" className="w-5 h-5" />
-              <span className="text-zinc-200 text-sm font-semibold">
+              <img src={Icon} alt="GitHub Icon" className="w-5 h-5 opacity-80 group-hover/btn:opacity-100 transition-opacity" />
+              <span className="text-zinc-200 text-sm font-semibold tracking-wide">
                 View Source Code
               </span>
             </a>
