@@ -9,7 +9,7 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
   return (
-    <div className="group relative w-full h-full items-center min-h-112.5 bg-[#18181b] rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col border p-2 border-zinc-800/50">
+    <div className="group relative w-full h-full items-center min-h-112.5 bg-[#18181b] rounded-3xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 flex flex-col border p-2 border-zinc-800/50">
       {/* Background Image Area */}
       <div className="relative items-center w-full aspect-video shrink-0 bg-neutral-900 rounded-t-3xl overflow-hidden">
         <img

@@ -14,7 +14,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  background-color: #1f2022;
+  background-color: var(--color-rich-black);
 }
 
 @keyframes fadeOut {
