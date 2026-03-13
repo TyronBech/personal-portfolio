@@ -50,7 +50,7 @@ const responsive = {
 
 function Project({ data }: ProjectProps): React.JSX.Element {
   return (
-    <div id="projects" className="w-full lg:min-h-screen items-center justify-center flex flex-col py-20 overflow-hidden">
+    <div id="projects" className="w-full lg:min-h-screen items-center justify-center flex flex-col">
       <h1
         className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-10"
       >
@@ -73,7 +73,7 @@ function Project({ data }: ProjectProps): React.JSX.Element {
             keyBoardControl={true}
             customTransition="transform 500ms ease-in-out"
             transitionDuration={500}
-            containerClass="carousel-container py-4 pb-16"
+            containerClass="carousel-container"
             removeArrowOnDeviceType={[]}
             itemClass="px-3 pb-8 pt-4"
             showDots={true}

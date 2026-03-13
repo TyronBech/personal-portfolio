@@ -26,18 +26,28 @@ body {
   animation: fadeOut 1.5s ease-out forwards;
 }
 /* Carousel Custom Styles */
-.react-multi-carousel-dot-list {
-  bottom: -5px !important;
+.custom-dot-list-style {
+  position: relative !important;
+  inset: auto !important;
+  margin-top: 0.75rem;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 5;
 }
-.react-multi-carousel-dot button {
-  border-color: #52525b !important;
+
+.custom-dot-list-style .react-multi-carousel-dot button {
+  border: 1px solid #52525b !important;
+  border-radius: 9999px;
   background: transparent;
   transition: all 0.3s ease;
-  margin-right: 6px;
-  width: 12px;
-  height: 12px;
+  margin: 0 !important;
+  width: 11px;
+  height: 11px;
 }
-.react-multi-carousel-dot--active button {
+
+.custom-dot-list-style .react-multi-carousel-dot--active button {
   background: #FC4C02 !important;
   border-color: #FC4C02 !important;
 }

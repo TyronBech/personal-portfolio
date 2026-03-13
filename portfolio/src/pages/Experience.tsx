@@ -25,7 +25,7 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
 
   return(
     <div id="experience" className="overflow-hidden w-screen lg:py-10">
-      <div className="grid md:grid-cols-2">
+      <div className="grid lg:grid-cols-2">
         {/* Left Side - Content */}
         <div className="flex items-center justify-center">
           <div className="max-w-2xl p-8">
@@ -62,7 +62,7 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
           </div>
         </div>
         {/* Right Side - Image */}
-        <div className="hidden md:flex items-center justify-center">
+        <div className="hidden lg:flex items-center justify-center">
           <img src={urlFor(data!.experience_image).url()} alt={data?.experience_image_alt} className="w-2/3 rounded-3xl" style={{ filter: 'saturate(2.35) sepia(0.2) hue-rotate(-10deg) brightness(0.8) drop-shadow(0 30px 12px rgba(0,0,0,0.2)) drop-shadow(0 8px 18px rgba(0,0,0,0.15))' }} />
         </div>
       </div>

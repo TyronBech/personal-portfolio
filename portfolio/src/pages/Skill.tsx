@@ -16,7 +16,7 @@ function Skill({ data }: SkillProps): React.JSX.Element {
   // Convert skills to a layout that fits nicely inside the velocity scroll.
   // We used to join strings, now we render a flex row.
   const skillsList = (
-    <div className="flex items-center gap-4 md:gap-8 m-0 p-0 mr-4 md:mr-8 h-28"> 
+    <div className="flex items-center gap-4 md:gap-8 m-0 p-0 mr-4 md:mr-8 h-24"> 
       {data.skills.map((skill, index) => (
         <div key={index} className="flex items-center justify-center min-w-max gap-4 md:gap-8">
           <AnimatePresence mode="wait">

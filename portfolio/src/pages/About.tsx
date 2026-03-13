@@ -8,7 +8,7 @@ interface AboutProps {
 
 function About({ data }: AboutProps): React.JSX.Element {
   return (
-    <div id="about" className="overflow-hidden w-screen py-28">
+    <div id="about" className="overflow-hidden w-screen lg:h-screen items-center justify-center flex flex-col">
       <div className="grid md:grid-cols-2 content-center">
         {/* Left Side - Image */}
         <div className="hidden md:flex md:items-center md:justify-center">
