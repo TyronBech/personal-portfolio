@@ -9,14 +9,16 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
   return (
-    <div className="group relative w-full h-full items-center min-h-112.5 bg-[#18181b] rounded-3xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 flex flex-col border p-2 border-zinc-800/50">
+    <div className="group relative w-full h-full items-center min-h-112.5 bg-[#18181b] rounded-3xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 flex flex-col border border-zinc-800/50">
       {/* Background Image Area */}
-      <div className="relative items-center w-full aspect-video shrink-0 bg-neutral-900 rounded-t-3xl overflow-hidden">
-        <img
-          src={urlFor(project.project_image).url()}
-          alt={project.name}
-          className="overflow-hidden m-auto w-[calc(100%-2px)] h-full object-cover opacity-90"
-        />
+      <div className="relative items-center w-full aspect-video shrink-0 bg-neutral-900 overflow-hidden">
+        <div className="p-2 overflow-hidden w-full h-full ">
+          <img
+            src={urlFor(project.project_image).url()}
+            alt={project.name}
+            className="overflow-hidden m-auto w-full h-full rounded-t-2xl object-cover opacity-90"
+          />
+        </div>
         <div className="absolute inset-0 bg-linear-to-t from-[#18181b]/50 via-transparent to-transparent opacity-70" />
 
         {/* Project Type on Top Right */}
@@ -28,7 +30,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
 
         {/* Folder tab SVG overlay positioned exactly at the bottom of the image area */}
         <svg
-          className="absolute bottom-0 left-0 w-full h-12 md:h-16 text-[#18181b] z-20 pointer-events-none drop-shadow-[0_-5px_5px_rgba(0,0,0,0.5)]"
+          className="absolute -bottom-1 -left-1 w-[calc(100%+4px)] h-12 md:h-16 text-[#18181b] z-20 pointer-events-none drop-shadow-[0_-5px_5px_rgba(0,0,0,0.5)]"
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
