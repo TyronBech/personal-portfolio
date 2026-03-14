@@ -50,7 +50,7 @@ const responsive = {
 
 function Project({ data }: ProjectProps): React.JSX.Element {
   return (
-    <div id="projects" className="w-full lg:min-h-screen items-center justify-center flex flex-col">
+    <div id="projects" className="w-full lg:min-h-screen items-center justify-end flex flex-col pt-24 pb-2">
       <h1
         className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-10"
       >
