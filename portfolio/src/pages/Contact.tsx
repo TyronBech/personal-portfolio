@@ -94,25 +94,25 @@ function Contact({ data }: ContactProps): React.JSX.Element {
             <div className="grid sm:grid-cols-2 gap-4 mt-8">
               <motion.a
                 whileHover={{ scale: 1.05 }}
-                href={data?.socials[1].url}
+                href={data?.socials?.[1]?.url}
                 target="_blank"
                 className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
               >
                 <Linkedin className="w-8 h-8 text-zinc-400 group-hover:text-halloween-orange mb-2" />
                 <span className="text-sm md:text-base font-lexend text-zinc-300">
-                  {data?.socials[1].name}
+                  {data?.socials?.[1]?.name}
                 </span>
               </motion.a>
 
               <motion.a
                 whileHover={{ scale: 1.05 }}
-                href={data?.socials[0].url}
+                href={data?.socials?.[0]?.url}
                 target="_blank"
                 className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
               >
                 <Github className="w-8 h-8 text-zinc-400 group-hover:text-halloween-orange mb-2" />
                 <span className="text-sm font-lexend text-zinc-300">
-                  {data?.socials[0].name}
+                  {data?.socials?.[0]?.name}
                 </span>
               </motion.a>
             </div>
