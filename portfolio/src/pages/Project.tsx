@@ -74,7 +74,7 @@ function Project({ data }: ProjectProps): React.JSX.Element {
             customTransition="transform 500ms ease-in-out"
             transitionDuration={500}
             containerClass="carousel-container"
-            removeArrowOnDeviceType={["mobile", "tablet", "desktop"]}
+            arrows={false}
             itemClass="px-3 pb-8 pt-4"
             showDots={true}
             renderDotsOutside={true}
