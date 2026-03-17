@@ -86,7 +86,7 @@ const CameraLoading: React.FC<CameraLoadingProps> = ({ running = true }) => {
         {/* Camera icon */} 
         <div className="absolute bottom-15 md:bottom-18 left-1/2 transform -translate-x-1/2">
           {/* Corner brackets */}
-          <div className="absolute -top-1.5 -right-1.5 md:-top-1 md:-right-2 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-white"></div>
+          <div className="absolute -top-1.5 -right-1.5 md:-top-2 md:-right-2 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-white"></div>
           <div className="absolute -bottom-1.5 -left-1.5 md:-bottom-2 md:-left-2 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-white"></div>
           {/* Camera body */}
           <div className="flex justify-center items-start w-10 h-6 md:w-15 md:h-9 border-2 border-white rounded-md">
