@@ -1,4 +1,3 @@
-import Camera from "@/assets/images/Camera.png";
 import { urlFor } from "@/data/sanity";
 import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
