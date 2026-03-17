@@ -51,10 +51,9 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
             </motion.h1>
             <div className="relative border-l border-zinc-700 ml-3 md:ml-4 mt-6">
               {sortedExperiences.map((experience, index) => (
-                <div>
+                <div key={experience.id}>
                   <span className="absolute flex items-center justify-center w-3 h-3 bg-halloween-orange rounded-full -left-[6.5px] ring-1 ring-zinc-200 mt-2"></span>
                   <motion.div
-                    key={experience.id}
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
