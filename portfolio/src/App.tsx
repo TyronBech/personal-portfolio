@@ -40,9 +40,9 @@ function App(): React.JSX.Element {
 
       imageUrls.forEach((url) => {
         const img = new Image();
-        img.src = url;
         img.onload = handleLoad;
         img.onerror = handleLoad; // Proceed even if one fails
+        img.src = url;
       });
     }
   }, [data, loading]);
