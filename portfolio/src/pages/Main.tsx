@@ -1,6 +1,7 @@
 import React from "react";
 import { urlFor } from "@/data/sanity";
 import type { PortfolioData } from "@/types/portfolio";
+import { motion } from "framer-motion";
 
 interface MainProps {
   data: PortfolioData | null;
@@ -12,26 +13,41 @@ function Main({ data }: MainProps): React.JSX.Element {
       {/* --- CONTAINER --- */}
       <div className="relative w-full h-full flex flex-col md:justify-start mt-10 lg:mt-0 lg:justify-center items-center lg:block">
         {/* 1. PROFILE PICTURE */}
-        <div className="z-10 order-1 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2">
+        <motion.div 
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="z-10 order-1 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2"
+        >
           <img
             src={urlFor(data!.profile_image).url()}
             className="w-48 md:w-72 lg:w-100 xl:w-118 aspect-square text-white lg:aspect-auto object-cover rounded-full lg:rounded-t-[3rem] lg:rounded-b-none shadow-2xl lg:shadow-none"
             alt="Profile Picture"
           />
-        </div>
+        </motion.div>
 
         {/* 2. NAME */}
-        <div className="z-30 order-2 mt-6 lg:mt-0 lg:absolute lg:bottom-6 lg:w-full text-center pointer-events-none">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="z-30 order-2 mt-6 lg:mt-0 lg:absolute lg:bottom-6 lg:w-full text-center pointer-events-none"
+        >
           <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-special-gothic leading-none text-white">
             <span className="text-halloween-orange">{data?.first_name}</span>{" "}
             {data?.last_name}
           </h1>
-        </div>
+        </motion.div>
 
         {/* 3. DATA (Status, Role, Message) */}
         <div className="z-40 order-3 mt-6 lg:mt-0 w-full px-6 lg:absolute lg:inset-0 lg:py-12 lg:grid lg:grid-cols-2 lg:items-center">
           {/* Left Side (Status & Role) */}
-          <div className="flex flex-col items-center lg:w-5/9 lg:items-start justify-center space-y-3 lg:space-y-2">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-col items-center lg:w-5/9 lg:items-start justify-center space-y-3 lg:space-y-2"
+          >
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/80 px-4 py-1.5 text-zinc-400 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
@@ -52,13 +68,18 @@ function Main({ data }: MainProps): React.JSX.Element {
             <p className="text-white text-2xl lg:text-4xl xl:text-5xl tracking-wider font-lexend font-semibold text-center lg:text-left">
               {data?.role}
             </p>
-          </div>
+          </motion.div>
           {/* Right Side (Message) */}
-          <div className="flex flex-col items-center lg:w-5/9 lg:justify-self-end justify-center mt-4 lg:mt-0">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex flex-col items-center lg:w-5/9 lg:justify-self-end justify-center mt-4 lg:mt-0"
+          >
             <p className="text-zinc-400 text-sm lg:text-lg xl:text-xl tracking-wide font-lexend text-center lg:text-right max-w-md">
               {data?.message}
             </p>
-          </div>
+          </motion.div>
         </div>
         {/* GRADIENT SHADOW */}
         <div className="absolute inset-0 pointer-events-none">

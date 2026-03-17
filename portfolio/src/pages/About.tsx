@@ -1,6 +1,7 @@
 import PUPT from "@/assets/svg/PUPT_Logo.svg";
 import { urlFor } from "@/data/sanity";
 import type { PortfolioData } from "@/types/portfolio";
+import { motion } from "framer-motion";
 
 interface AboutProps {
   data: PortfolioData | null;
@@ -11,11 +12,23 @@ function About({ data }: AboutProps): React.JSX.Element {
     <div id="about" className="overflow-hidden w-screen lg:h-screen items-center justify-center flex flex-col">
       <div className="grid md:grid-cols-2 content-center">
         {/* Left Side - Image */}
-        <div className="hidden md:flex md:items-center md:justify-center">
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="hidden md:flex md:items-center md:justify-center"
+        >
           <img src={urlFor(data!.about_image).url()} alt={data?.about_image_alt} className="w-1/2 rounded-3xl text-white" />
-        </div>
+        </motion.div>
         {/* Right Side - Text Content */}
-        <div className="flex items-center justify-center">
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center justify-center"
+        >
           <div className="max-w-2xl p-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-6">
               About <span className="text-halloween-orange">me</span>
@@ -33,7 +46,7 @@ function About({ data }: AboutProps): React.JSX.Element {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

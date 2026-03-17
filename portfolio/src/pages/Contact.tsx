@@ -1,5 +1,6 @@
 import { Mail, Phone, Linkedin, Github } from "lucide-react";
 import type { PortfolioData } from "@/types/portfolio";
+import { motion } from "framer-motion";
 
 interface ContactProps {
   data: PortfolioData | null;
@@ -9,10 +10,16 @@ function Contact({ data }: ContactProps): React.JSX.Element {
   return (
     <div
       id="contact"
-      className="w-screen flex flex-col items-center justify-center px-6 py-24"
+      className="w-screen flex flex-col items-center justify-center px-6 py-24 overflow-hidden"
     >
       {/* Header Section */}
-      <div className="text-center mb-12">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.8 }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12"
+      >
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-4">
           Let's <span className="text-halloween-orange">Connect</span>
         </h1>
@@ -23,10 +30,16 @@ function Contact({ data }: ContactProps): React.JSX.Element {
         <p className="text-sm md:text-base text-zinc-400 font-lexend max-w-md mx-auto">
           Feel free to reach out through any of the platforms below!
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Contact Card */}
-      <div className="w-full max-w-4xl bg-white/5 border border-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95, y: 40 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, delay: 0.2, type: "spring", bounce: 0.3 }}
+        className="w-full max-w-4xl bg-white/5 border border-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Side: Direct Contact */}
           <div className="space-y-8">
@@ -35,7 +48,8 @@ function Contact({ data }: ContactProps): React.JSX.Element {
             </h3>
 
             <div className="space-y-6">
-              <a
+              <motion.a
+                whileHover={{ scale: 1.02, x: 5 }}
                 href={`mailto:${data?.email}`}
                 className="group flex items-center gap-4 text-zinc-300 hover:text-halloween-orange transition-colors"
               >
@@ -50,9 +64,10 @@ function Contact({ data }: ContactProps): React.JSX.Element {
                     {data?.email}
                   </p>
                 </div>
-              </a>
+              </motion.a>
 
-              <a
+              <motion.a
+                whileHover={{ scale: 1.02, x: 5 }}
                 href={`tel:${data?.phone}`}
                 className="group flex items-center gap-4 text-zinc-300 hover:text-halloween-orange transition-colors"
               >
@@ -67,7 +82,7 @@ function Contact({ data }: ContactProps): React.JSX.Element {
                     {data?.phone}
                   </p>
                 </div>
-              </a>
+              </motion.a>
             </div>
           </div>
 
@@ -77,7 +92,8 @@ function Contact({ data }: ContactProps): React.JSX.Element {
               Social Spaces
             </h3>
             <div className="grid sm:grid-cols-2 gap-4 mt-8">
-              <a
+              <motion.a
+                whileHover={{ scale: 1.05 }}
                 href={data?.socials[1].url}
                 target="_blank"
                 className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
@@ -86,9 +102,10 @@ function Contact({ data }: ContactProps): React.JSX.Element {
                 <span className="text-sm md:text-base font-lexend text-zinc-300">
                   {data?.socials[1].name}
                 </span>
-              </a>
+              </motion.a>
 
-              <a
+              <motion.a
+                whileHover={{ scale: 1.05 }}
                 href={data?.socials[0].url}
                 target="_blank"
                 className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
@@ -97,7 +114,7 @@ function Contact({ data }: ContactProps): React.JSX.Element {
                 <span className="text-sm font-lexend text-zinc-300">
                   {data?.socials[0].name}
                 </span>
-              </a>
+              </motion.a>
             </div>
 
             {/* A "Status" indicator makes it feel live */}
@@ -118,11 +135,17 @@ function Contact({ data }: ContactProps): React.JSX.Element {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       {/* Footer-like text */}
-      <p className="mt-12 text-zinc-600 text-xs font-lexend tracking-widest uppercase">
+      <motion.p 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="mt-12 text-zinc-600 text-xs font-lexend tracking-widest uppercase"
+      >
         © {new Date().getFullYear()} — Built with Passion
-      </p>
+      </motion.p>
     </div>
   );
 }
