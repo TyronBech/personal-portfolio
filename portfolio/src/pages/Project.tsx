@@ -51,9 +51,7 @@ const responsive = {
 function Project({ data }: ProjectProps): React.JSX.Element {
   return (
     <div id="projects" className="w-full lg:min-h-screen items-center justify-end flex flex-col pt-24 pb-2">
-      <h1
-        className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-10"
-      >
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-10">
         Projects
       </h1>
 
@@ -62,30 +60,38 @@ function Project({ data }: ProjectProps): React.JSX.Element {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="w-full max-w-350 mx-auto px-4 md:px-8"
+        className="w-full max-w-[97%] mx-auto px-4 md:px-8"
       >
         {data?.projects && data.projects.length > 0 && (
-          <Carousel
-            responsive={responsive}
-            infinite={true}
-            autoPlay={true}
-            autoPlaySpeed={4000}
-            keyBoardControl={true}
-            customTransition="transform 500ms ease-in-out"
-            transitionDuration={500}
-            containerClass="carousel-container"
-            arrows={false}
-            itemClass="px-3 pb-8 pt-4"
-            showDots={true}
-            renderDotsOutside={true}
-            dotListClass="custom-dot-list-style"
-          >
-            {data.projects.map((project, index) => (
-              <motion.div key={index} variants={cardVariants} className="h-full w-full mx-auto">
-                <FolderCard project={project} />
-              </motion.div>
-            ))}
-          </Carousel>
+          <div className="relative">
+            <div
+              className="absolute left-0 top-0 h-full w-12 z-10 pointer-events-none bg-linear-to-r from-rich-black via-halloween-ofrom-rich-black/50 to-transparent"
+            />
+            <div
+              className="absolute right-0 top-0 h-full w-12 z-10 pointer-events-none bg-linear-to-l from-rich-black via-halloween-ofrom-rich-black/50 to-transparent"
+            />
+            <Carousel
+              responsive={responsive}
+              infinite={true}
+              autoPlay={true}
+              autoPlaySpeed={4000}
+              keyBoardControl={true}
+              customTransition="transform 500ms ease-in-out"
+              transitionDuration={500}
+              containerClass="carousel-container"
+              arrows={false}
+              itemClass="px-3 pb-8 pt-4"
+              showDots={true}
+              renderDotsOutside={true}
+              dotListClass="custom-dot-list-style"
+            >
+              {data.projects.map((project, index) => (
+                <motion.div key={index} variants={cardVariants} className="h-full w-full mx-auto">
+                  <FolderCard project={project} />
+                </motion.div>
+              ))}
+            </Carousel>
+          </div>
         )}
       </motion.div>
     </div>
