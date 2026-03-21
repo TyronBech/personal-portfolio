@@ -65,10 +65,10 @@ function Project({ data }: ProjectProps): React.JSX.Element {
         {data?.projects && data.projects.length > 0 && (
           <div className="relative">
             <div
-              className="absolute left-0 top-0 h-full w-12 z-10 pointer-events-none bg-linear-to-r from-rich-black/50 via-halloween to-transparent"
+              className="absolute left-0 top-0 h-full w-3 md:w-12 z-10 pointer-events-none bg-linear-to-r from-rich-black via-rich-black/50 to-transparent"
             />
             <div
-              className="absolute right-0 top-0 h-full w-12 z-10 pointer-events-none bg-linear-to-l from-rich-black/50 via-halloween to-transparent"
+              className="absolute right-0 top-0 h-full w-3 md:w-12 z-10 pointer-events-none bg-linear-to-l from-rich-black via-rich-black/50 to-transparent"
             />
             <Carousel
               responsive={responsive}
