@@ -80,7 +80,7 @@ function Project({ data }: ProjectProps): React.JSX.Element {
               transitionDuration={500}
               containerClass="carousel-container"
               arrows={false}
-              itemClass="px-3 pb-8 pt-4"
+              itemClass="px-3 pb-8"
               showDots={true}
               renderDotsOutside={true}
               dotListClass="custom-dot-list-style"
