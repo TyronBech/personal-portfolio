@@ -181,45 +181,6 @@ The frontend uses the `usePortfolio` hook to fetch content from Sanity:
 
 These are combined into a single `PortfolioData` object and passed down into the section components. Images are converted to usable URLs through the Sanity image builder and preloaded before the main UI becomes visible.
 
-## Local Development
-
-### Prerequisites
-
-- Node.js 18+ recommended
-- npm
-- A Sanity account if you want to edit or deploy studio content
-
-### Run the Frontend
-
-```bash
-cd portfolio
-npm install
-npm run dev
-```
-
-Useful frontend scripts:
-
-- `npm run dev` - start the Vite dev server
-- `npm run build` - type-check and create a production build
-- `npm run preview` - preview the production build locally
-- `npm run lint` - run ESLint
-- `npm run typecheck` - run TypeScript checks without building
-
-### Run the Sanity Studio
-
-```bash
-cd portfolio-backend
-npm install
-npm run dev
-```
-
-Useful studio scripts:
-
-- `npm run dev` - start the Sanity Studio locally
-- `npm run build` - build the studio
-- `npm run deploy` - deploy the studio
-- `npm run deploy-graphql` - deploy Sanity GraphQL configuration
-
 ## Configuration Details
 
 ### Frontend
@@ -232,9 +193,6 @@ Useful studio scripts:
 
 - The Sanity Studio is configured in `portfolio-backend/sanity.config.ts`
 - The frontend client is configured in `portfolio/src/data/sanity.ts`
-- The current Sanity project ID is `ubpspdu3`
-- The current dataset is `production`
-- The frontend uses the Sanity CDN with `useCdn: true`
 
 ## Deployment
 
@@ -248,32 +206,3 @@ Typical deployment flow:
 2. Push frontend changes to the repository.
 3. Vercel builds and deploys the React frontend.
 4. The deployed site reads the latest published Sanity content at runtime.
-
-## Design and UX Notes
-
-- The project uses motion-heavy section reveals and transitions.
-- Images are visually important and are preloaded before the main content is shown.
-- The experience section sorts entries in the UI rather than relying on backend ordering.
-- The projects section uses a responsive carousel for mobile, tablet, and desktop layouts.
-
-## Potential Improvements
-
-- Move Sanity client settings to environment variables
-- Add explicit GROQ queries with ordering and field selection
-- Add loading and error UI for failed content fetches
-- Add automated tests for data loading and section rendering
-- Document deployment steps for both frontend and studio in more detail
-- Add CI checks for linting and type safety
-
-## Website Screenshot / Demo
-
-If you want to document this project further, a good next step would be adding:
-
-- Screenshots of each section
-- A short GIF walkthrough
-- A content editing guide for Sanity Studio
-- Deployment badges and status checks
-
-## License
-
-No license is currently defined in the root project. The Sanity Studio package is marked as `UNLICENSED`.
