@@ -72,7 +72,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
           <div className="mt-auto flex flex-col gap-5">
             {/* Technologies Tags */}
             <div className="flex flex-wrap gap-2">
-              {project.technologies.slice(0, 5).map((tech, i) => (
+              {project.technologies.map((tech, i) => (
                 <span
                   key={i}
                   className="px-2.5 py-1 text-[10px] font-bold text-zinc-300 border border-zinc-700/50 rounded bg-zinc-800/50 capitalize tracking-wider"
