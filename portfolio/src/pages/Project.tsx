@@ -3,7 +3,7 @@ import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 interface ProjectProps {
   data: PortfolioData | null;
@@ -52,9 +52,10 @@ const responsive = {
 function Project({ data }: ProjectProps): React.JSX.Element {
   const [isRendered, setIsRendered] = useState(false);
 
-  const sortedProjects = data?.projects 
-    ? [...data.projects].sort((a, b) => (a.id ?? 0) - (b.id ?? 0))
-    : [];
+  const sortedProjects = useMemo(
+    () => data?.projects ? [...data.projects].sort((a, b) => (a.id ?? 0) - (b.id ?? 0)) : [],
+    [data?.projects]
+  );
 
   return (
     <div id="projects" className="w-full lg:min-h-screen items-center justify-end flex flex-col pt-20 pb-2">
@@ -68,7 +69,7 @@ function Project({ data }: ProjectProps): React.JSX.Element {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         onAnimationComplete={() => setIsRendered(true)}
-        style={{ willChange: "opacity" }}
+        style={isRendered ? undefined : { willChange: "opacity" }}
         className="w-full max-w-[97%] mx-auto px-4 md:px-8"
       >
         {sortedProjects.length > 0 && (
@@ -96,7 +97,7 @@ function Project({ data }: ProjectProps): React.JSX.Element {
               className="pt-3"
             >
               {sortedProjects.map((project, index) => (
-                <motion.div key={index} variants={cardVariants} style={{ willChange: "transform, opacity" }} className="h-full w-full mx-auto">
+                <motion.div key={project.id ?? index} variants={cardVariants} style={isRendered ? undefined : { willChange: "transform, opacity" }} className="h-full w-full mx-auto">
                   <FolderCard project={project} />
                 </motion.div>
               ))}
