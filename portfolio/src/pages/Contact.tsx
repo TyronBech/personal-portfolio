@@ -18,6 +18,7 @@ function Contact({ data }: ContactProps): React.JSX.Element {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.6 }}
+        style={{ willChange: "transform, opacity" }}
         className="text-center mb-12"
       >
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-4">
@@ -38,6 +39,7 @@ function Contact({ data }: ContactProps): React.JSX.Element {
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, delay: 0.2, type: "spring", bounce: 0.3 }}
+        style={{ willChange: "transform, opacity" }}
         className="w-full max-w-4xl bg-white/5 border border-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -142,6 +144,7 @@ function Contact({ data }: ContactProps): React.JSX.Element {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.6 }}
+        style={{ willChange: "opacity" }}
         className="mt-12 text-zinc-600 text-xs font-lexend tracking-widest uppercase"
       >
         © {new Date().getFullYear()} — Built with Passion
