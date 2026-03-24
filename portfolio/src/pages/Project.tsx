@@ -3,6 +3,7 @@ import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useState } from "react";
 
 interface ProjectProps {
   data: PortfolioData | null;
@@ -49,6 +50,12 @@ const responsive = {
 };
 
 function Project({ data }: ProjectProps): React.JSX.Element {
+  const [isRendered, setIsRendered] = useState(false);
+
+  const sortedProjects = data?.projects 
+    ? [...data.projects].sort((a, b) => (a.id ?? 0) - (b.id ?? 0))
+    : [];
+
   return (
     <div id="projects" className="w-full lg:min-h-screen items-center justify-end flex flex-col pt-24 pb-2">
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-10">
@@ -60,9 +67,10 @@ function Project({ data }: ProjectProps): React.JSX.Element {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
+        onAnimationComplete={() => setIsRendered(true)}
         className="w-full max-w-[97%] mx-auto px-4 md:px-8"
       >
-        {data?.projects && data.projects.length > 0 && (
+        {sortedProjects.length > 0 && (
           <div className="relative">
             <div
               className="absolute left-0 top-0 h-full w-3 md:w-12 z-10 pointer-events-none bg-linear-to-r from-rich-black via-rich-black/50 to-transparent"
@@ -73,7 +81,7 @@ function Project({ data }: ProjectProps): React.JSX.Element {
             <Carousel
               responsive={responsive}
               infinite={true}
-              autoPlay={true}
+              autoPlay={isRendered}
               autoPlaySpeed={4000}
               keyBoardControl={true}
               customTransition="transform 500ms ease-in-out"
@@ -85,7 +93,7 @@ function Project({ data }: ProjectProps): React.JSX.Element {
               renderDotsOutside={true}
               dotListClass="custom-dot-list-style"
             >
-              {data.projects.map((project, index) => (
+              {sortedProjects.map((project, index) => (
                 <motion.div key={index} variants={cardVariants} className="h-full w-full mx-auto">
                   <FolderCard project={project} />
                 </motion.div>
