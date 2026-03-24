@@ -45,6 +45,7 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.8 }}
               transition={{ duration: 0.5 }}
+              style={{ willChange: "transform, opacity" }}
               className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-6"
             >
               Experience
@@ -58,6 +59,7 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.5, delay: index * 0.15 }}
+                    style={{ willChange: "transform, opacity" }}
                     className="mb-10 ml-6 md:ml-8"
                   >
                     <p className="mb-2 text-sm font-normal leading-none text-zinc-500 font-lexend">
@@ -100,6 +102,7 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
           whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, type: "spring", bounce: 0.4 }}
+          style={{ willChange: "transform, opacity" }}
           className="hidden lg:flex items-center justify-center"
         >
           <img

@@ -17,6 +17,7 @@ function About({ data }: AboutProps): React.JSX.Element {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
+          style={{ willChange: "transform, opacity" }}
           className="hidden md:flex md:items-center md:justify-center"
         >
           <img src={urlFor(data!.about_image).url()} alt={data?.about_image_alt} className="w-1/2 rounded-3xl text-white" />
@@ -27,6 +28,7 @@ function About({ data }: AboutProps): React.JSX.Element {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          style={{ willChange: "transform, opacity" }}
           className="flex items-center justify-center"
         >
           <div className="max-w-2xl p-8">

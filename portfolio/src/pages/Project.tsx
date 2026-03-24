@@ -57,8 +57,8 @@ function Project({ data }: ProjectProps): React.JSX.Element {
     : [];
 
   return (
-    <div id="projects" className="w-full lg:min-h-screen items-center justify-end flex flex-col pt-24 pb-2">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-10">
+    <div id="projects" className="w-full lg:min-h-screen items-center justify-end flex flex-col pt-20 pb-2">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-6">
         Projects
       </h1>
 
@@ -68,6 +68,7 @@ function Project({ data }: ProjectProps): React.JSX.Element {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         onAnimationComplete={() => setIsRendered(true)}
+        style={{ willChange: "opacity" }}
         className="w-full max-w-[97%] mx-auto px-4 md:px-8"
       >
         {sortedProjects.length > 0 && (
@@ -92,9 +93,10 @@ function Project({ data }: ProjectProps): React.JSX.Element {
               showDots={true}
               renderDotsOutside={true}
               dotListClass="custom-dot-list-style"
+              className="pt-3"
             >
               {sortedProjects.map((project, index) => (
-                <motion.div key={index} variants={cardVariants} className="h-full w-full mx-auto">
+                <motion.div key={index} variants={cardVariants} style={{ willChange: "transform, opacity" }} className="h-full w-full mx-auto">
                   <FolderCard project={project} />
                 </motion.div>
               ))}

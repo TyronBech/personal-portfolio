@@ -17,6 +17,7 @@ function Main({ data }: MainProps): React.JSX.Element {
           initial={{ opacity: 0, y: 50, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          style={{ willChange: "transform, opacity" }}
           className="z-10 order-1 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2"
         >
           <img
@@ -31,6 +32,7 @@ function Main({ data }: MainProps): React.JSX.Element {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          style={{ willChange: "transform, opacity" }}
           className="z-30 order-2 mt-6 lg:mt-0 lg:absolute lg:bottom-6 lg:w-full text-center pointer-events-none"
         >
           <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-special-gothic leading-none text-white">
@@ -46,6 +48,7 @@ function Main({ data }: MainProps): React.JSX.Element {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
+            style={{ willChange: "transform, opacity" }}
             className="flex flex-col items-center lg:w-5/9 lg:items-start justify-center space-y-3 lg:space-y-2"
           >
             {/* Status Pill */}
@@ -74,6 +77,7 @@ function Main({ data }: MainProps): React.JSX.Element {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
+            style={{ willChange: "transform, opacity" }}
             className="flex flex-col items-center lg:w-5/9 lg:justify-self-end justify-center mt-4 lg:mt-0"
           >
             <p className="text-zinc-400 text-sm lg:text-lg xl:text-xl tracking-wide font-lexend text-center lg:text-right max-w-md">

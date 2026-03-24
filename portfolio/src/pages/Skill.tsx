@@ -27,6 +27,7 @@ function Skill({ data }: SkillProps): React.JSX.Element {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, ease: "easeIn" }}
+                style={{ willChange: "transform, opacity" }}
                 className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"
               >
                 {skill.icon && (
@@ -44,6 +45,7 @@ function Skill({ data }: SkillProps): React.JSX.Element {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: "easeIn" }}
+                style={{ willChange: "transform, opacity" }}
                 className="flex items-center gap-4 md:gap-8"
               >
                 <span className="text-inherit">{skill.name}</span>
