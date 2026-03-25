@@ -38,7 +38,7 @@ export default function Skill({ data }: { data?: PortfolioData | null }) {
   return (
     <>
       <style>{MARQUEE_STYLE}</style>
-      <section className="relative w-full bg-rich-black py-14 flex flex-col gap-7 overflow-hidden">
+      <section className="relative w-full bg-rich-black py-18 flex flex-col gap-7 overflow-hidden">
         <EdgeFades />
         <MarqueeRow skills={row1} reverse={false} />
         <MarqueeRow skills={row2} reverse={true} />

@@ -5,12 +5,10 @@ import type { SanityImageSource } from "@sanity/image-url";
 export type SkillItem = { name: string; color?: string; svg?: ReactNode; icon?: SanityImageSource };
 
 export default function SkillCell({ skill }: { skill: SkillItem }) {
-  const ICON_SIZE = 44;
 
   return (
     <span
-      className="group relative flex items-center justify-center shrink-0 cursor-default px-6"
-      style={{ height: ICON_SIZE }}
+      className="group relative flex items-center justify-center shrink-0 cursor-default p-6"
     >
       {/* Invisible spacer to set track width dynamically based on max size of either text or icon */}
       <span 
@@ -27,11 +25,7 @@ export default function SkillCell({ skill }: { skill: SkillItem }) {
       {/* Text layer */}
       <span className="absolute inset-0 flex items-center justify-center transition-all duration-300 ease-out group-hover:opacity-0 group-hover:-translate-y-3">
         <span
-          className="font-main font-bold text-zinc-400 whitespace-nowrap"
-          style={{
-            fontSize: "clamp(0.9rem, 2vw, 1.15rem)",
-            letterSpacing: "-0.02em",
-          }}
+          className="font-bold font-lexend tracking-tighter text-4xl text-zinc-700 whitespace-nowrap"
         >
           {skill.name}
         </span>
@@ -46,7 +40,7 @@ export default function SkillCell({ skill }: { skill: SkillItem }) {
             className="max-w-full max-h-full object-contain"
           />
         ) : (
-          <span style={{ width: ICON_SIZE, height: ICON_SIZE, display: "flex", justifyContent: "center" }}>
+          <span className="flex items-center justify-center w-10 h-10 text-2xl">
             {skill.svg}
           </span>
         )}
