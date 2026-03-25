@@ -28,7 +28,7 @@ export default function SkillCell({ skill }: { skill: SkillItem }) {
       </span>
 
       {/* Icon layer */}
-      <span className="absolute inset-0 flex items-center justify-center opacity-0 translate-y-3 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 p-1">
+      <span className="absolute inset-0 flex items-center justify-center opacity-0 translate-y-3 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 p-3">
         {skill.icon ? (
           <img 
             src={urlFor(skill.icon).url()} 

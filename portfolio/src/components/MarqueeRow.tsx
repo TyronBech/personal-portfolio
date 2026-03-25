@@ -14,7 +14,7 @@ export default function MarqueeRow({ skills, reverse = false }: { skills: SkillI
     <div className="overflow-hidden w-full">
       <div className={`${trackClass} items-center gap-10`}>
         {doubled.map((skill, i) => (
-          <span key={i} className="inline-flex items-center gap-10">
+          <span key={i} className="inline-flex items-center gap-2">
             <SkillCell skill={skill} />
             <Dot />
           </span>

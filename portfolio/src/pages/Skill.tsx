@@ -12,7 +12,7 @@ export default function Skill({ data }: { data?: PortfolioData | null }) {
   const row2 = skills.slice(mid);
 
   return (
-    <section className="relative w-full bg-rich-black py-[4.5rem] flex flex-col gap-7 overflow-hidden">
+    <section className="relative w-full bg-rich-black py-18 flex flex-col gap-7 overflow-hidden">
       <EdgeFades />
       <MarqueeRow skills={row1} reverse={false} />
       <MarqueeRow skills={row2} reverse={true} />
