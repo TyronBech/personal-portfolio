@@ -10,14 +10,10 @@ export default function SkillCell({ skill }: { skill: SkillItem }) {
     <span
       className="group relative flex items-center justify-center shrink-0 cursor-default p-6"
     >
-      {/* Invisible spacer to set track width dynamically based on max size of either text or icon */}
-      <span 
-        className="font-main font-bold invisible whitespace-nowrap px-4" 
+      {/* Invisible spacer to set track width based on the visible text layer */}
+      <span
+        className="font-lexend font-bold tracking-tighter text-4xl invisible whitespace-nowrap px-4"
         aria-hidden="true"
-        style={{
-          fontSize: "clamp(0.9rem, 2vw, 1.15rem)",
-          letterSpacing: "-0.02em",
-        }}
       >
         {skill.name}
       </span>
