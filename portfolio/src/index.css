@@ -52,24 +52,26 @@ body {
   border-color: #FC4C02 !important;
 }
 
-/* Marquee animation */
 @keyframes marquee-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(-50% - 1.25rem)); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(calc(-1 * var(--marquee-offset)), 0, 0); }
 }
 @keyframes marquee-right {
-  from { transform: translateX(calc(-50% - 1.25rem)); }
-  to { transform: translateX(0); }
+  from { transform: translate3d(calc(-1 * var(--marquee-offset)), 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
 }
+
 .marquee-track-left {
   display: flex;
   width: max-content;
   animation: marquee-left 28s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
 }
 .marquee-track-right {
   display: flex;
   width: max-content;
   animation: marquee-right 22s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
 }
