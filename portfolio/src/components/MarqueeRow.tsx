@@ -9,12 +9,13 @@ export function Dot() {
 export default function MarqueeRow({ skills, reverse = false }: { skills: SkillItem[], reverse?: boolean }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState<number | null>(null);
+  const skillsKey = JSON.stringify(skills);
 
   useEffect(() => {
     if (!trackRef.current) return;
-    const half = Math.round(trackRef.current.scrollWidth / 2);
+    const half = trackRef.current.scrollWidth / 2;
     setOffset(half);
-  }, [skills]);
+  }, [skillsKey]);
 
   const doubled = [...skills, ...skills];
   const trackClass = reverse ? "marquee-track-right" : "marquee-track-left";
