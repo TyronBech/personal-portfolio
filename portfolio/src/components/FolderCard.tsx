@@ -57,7 +57,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ project }) => {
 
           {/* Description Area */}
           <div className="mb-8 relative group/desc">
-            <p className="text-zinc-400 text-sm font-lexend leading-relaxed line-clamp-4">
+            <p className="text-zinc-400 text-sm font-lexend leading-relaxed line-clamp-3">
               {project.description}
             </p>
             {/* Full description popover on hover */}

@@ -1,10 +1,6 @@
 import { urlFor } from "@/data/sanity";
-import type { PortfolioData } from "@/types/portfolio";
+import type { DataProps } from "@/types/portfolio";
 import { motion } from "framer-motion";
-
-interface ExperienceProps {
-  data: PortfolioData | null;
-}
 
 const parseStartDate = (dateStr: string): Date => {
   const months: Record<string, number> = {
@@ -25,7 +21,7 @@ const parseStartDate = (dateStr: string): Date => {
   return new Date(parseInt(year), months[month] ?? 0);
 };
 
-function Experience({ data }: ExperienceProps): React.JSX.Element {
+function Experience({ data }: DataProps): React.JSX.Element {
   const sortedExperiences = data?.experiences
     ? [...data.experiences].sort(
         (a, b) =>
@@ -53,7 +49,7 @@ function Experience({ data }: ExperienceProps): React.JSX.Element {
             <div className="relative border-l border-zinc-700 ml-3 md:ml-4 mt-6">
               {sortedExperiences.map((experience, index) => (
                 <div key={experience.id}>
-                  <span className="absolute flex items-center justify-center w-3 h-3 bg-halloween-orange rounded-full -left-[6.5px] ring-1 ring-zinc-200 mt-2"></span>
+                  <span className="absolute flex items-center justify-center w-3 h-3 bg-halloween-orange rounded-full left-[-6.5px] ring-1 ring-zinc-200 mt-2"></span>
                   <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
