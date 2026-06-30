@@ -43,6 +43,10 @@ export interface Project {
   project_image: SanityImageSource;
 }
 
+export interface DataProps {
+  data: PortfolioData | null;
+}
+
 export interface PortfolioData {
   first_name: string;
   middle_name: string;

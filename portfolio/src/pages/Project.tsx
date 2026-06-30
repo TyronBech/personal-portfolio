@@ -1,13 +1,9 @@
 import FolderCard from "@/components/FolderCard";
-import type { PortfolioData } from "@/types/portfolio";
+import type { DataProps } from "@/types/portfolio";
 import { motion } from "framer-motion";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useMemo, useState } from "react";
-
-interface ProjectProps {
-  data: PortfolioData | null;
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -49,7 +45,7 @@ const responsive = {
   },
 };
 
-function Project({ data }: ProjectProps): React.JSX.Element {
+function Project({ data }: DataProps): React.JSX.Element {
   const [isRendered, setIsRendered] = useState(false);
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
 
