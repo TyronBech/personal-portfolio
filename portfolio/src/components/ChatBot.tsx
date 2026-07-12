@@ -177,7 +177,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ ownerName, aboutImageUrl }) =>
                 Tyron's Alter-Ego
               </h3>
               <p className="text-[10px] text-zinc-400">
-                Online | Powered by Gemini 3.5 Flash
+                Online | Powered by Gemini 2.5 Flash
               </p>
             </div>
           </div>
