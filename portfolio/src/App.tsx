@@ -73,7 +73,10 @@ function App(): React.JSX.Element {
           <Experience data={data} />
           <Project data={data} />
           <Contact data={data} />
-          <ChatBot ownerName={data ? `${data.first_name} ${data.last_name}` : undefined} />
+          <ChatBot 
+            ownerName={data ? `${data.first_name} ${data.last_name}` : undefined} 
+            aboutImageUrl={data?.about_image ? urlFor(data.about_image).url() : undefined}
+          />
         </>
       )}
     </div>

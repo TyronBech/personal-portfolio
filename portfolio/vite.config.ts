@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
   process.env.GEMINI_API_KEY = env.GEMINI_API_KEY || ''
   process.env.SANITY_PROJECT_ID = env.SANITY_PROJECT_ID || 'ubpspdu3'
   process.env.SANITY_DATASET = env.SANITY_DATASET || 'production'
+  process.env.CHAT_SYSTEM_INSTRUCTION = env.CHAT_SYSTEM_INSTRUCTION || ''
 
   return {
     plugins: [

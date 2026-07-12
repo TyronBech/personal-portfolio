@@ -2,11 +2,27 @@ import React, { useState, useRef, useEffect } from "react";
 import { MessageSquare, X, Send, Sparkles, AlertCircle } from "lucide-react";
 import type { Content } from "@google/generative-ai";
 
+const formatMessageText = (text?: string) => {
+  if (!text) return null;
+  const parts = text.split(/\*\*([^*]+)\*\*/g);
+  return parts.map((part, index) => {
+    if (index % 2 === 1) {
+      return (
+        <strong key={index} className="font-bold text-white">
+          {part}
+        </strong>
+      );
+    }
+    return part;
+  });
+};
+
 interface ChatBotProps {
   ownerName?: string;
+  aboutImageUrl?: string;
 }
 
-export const ChatBot: React.FC<ChatBotProps> = ({ ownerName }) => {
+export const ChatBot: React.FC<ChatBotProps> = ({ ownerName, aboutImageUrl }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [messages, setMessages] = useState<Content[]>([]);
   const [input, setInput] = useState<string>("");
@@ -103,11 +119,23 @@ export const ChatBot: React.FC<ChatBotProps> = ({ ownerName }) => {
       {/* Floating Chat Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-linear-to-tr from-halloween-orange to-[#ff6a2e] text-white shadow-[0_4px_24px_rgba(252,76,2,0.4)] hover:shadow-[0_8px_32px_rgba(252,76,2,0.6)] cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 border border-halloween-orange/20 focus:outline-none"
+        className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-linear-to-tr from-halloween-orange to-[#ff6a2e] text-white shadow-[0_4px_24px_rgba(252,76,2,0.4)] hover:shadow-[0_8px_32px_rgba(252,76,2,0.6)] cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 border border-halloween-orange/20 focus:outline-none overflow-hidden"
         aria-label="Toggle AI assistant"
       >
         {isOpen ? (
           <X className="w-6 h-6 transition-transform duration-300 rotate-0 hover:rotate-90" />
+        ) : aboutImageUrl ? (
+          <div className="relative w-full h-full">
+            <img
+              src={aboutImageUrl}
+              alt={ownerName || "Assistant"}
+              className="w-full h-full object-cover"
+            />
+            <span className="absolute -top-1 -right-1 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
+            </span>
+          </div>
         ) : (
           <div className="relative">
             <MessageSquare className="w-6 h-6 animate-pulse" />
@@ -131,17 +159,25 @@ export const ChatBot: React.FC<ChatBotProps> = ({ ownerName }) => {
         <div className="bg-linear-to-r from-rich-black to-[#2a2b2e] border-b border-halloween-orange/20 p-4 flex items-center justify-between text-white">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="w-10 h-10 rounded-full bg-[#2a2b2e] border border-halloween-orange/30 flex items-center justify-center text-halloween-orange">
-                <Sparkles className="w-5 h-5" />
-              </div>
+              {aboutImageUrl ? (
+                <img
+                  src={aboutImageUrl}
+                  alt={ownerName || "Assistant"}
+                  className="w-10 h-10 rounded-full object-cover border border-halloween-orange/30"
+                />
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-[#2a2b2e] border border-halloween-orange/30 flex items-center justify-center text-halloween-orange">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+              )}
               <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-rich-black rounded-full"></span>
             </div>
             <div>
               <h3 className="font-semibold text-sm tracking-wide">
-                AI Alter-Ego
+                Tyron's Alter-Ego
               </h3>
               <p className="text-[10px] text-zinc-400">
-                Online | Powered by Gemini 3.5
+                Online | Powered by Gemini 3.5 Flash
               </p>
             </div>
           </div>
@@ -157,9 +193,17 @@ export const ChatBot: React.FC<ChatBotProps> = ({ ownerName }) => {
         <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-rich-black/40 scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center p-4 space-y-4">
-              <div className="w-12 h-12 rounded-full bg-halloween-orange/10 flex items-center justify-center text-halloween-orange">
-                <Sparkles className="w-6 h-6 animate-pulse" />
-              </div>
+              {aboutImageUrl ? (
+                <img
+                  src={aboutImageUrl}
+                  alt={ownerName || "Assistant"}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-halloween-orange/30 animate-pulse"
+                />
+              ) : (
+                <div className="w-12 h-12 rounded-full bg-halloween-orange/10 flex items-center justify-center text-halloween-orange">
+                  <Sparkles className="w-6 h-6 animate-pulse" />
+                </div>
+              )}
               <div>
                 <h4 className="font-medium text-white text-sm">
                   Hello visitor!
@@ -185,13 +229,13 @@ export const ChatBot: React.FC<ChatBotProps> = ({ ownerName }) => {
             messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`p-3 rounded-2xl text-sm max-w-[82%] leading-relaxed shadow-sm ${
+                className={`p-3 rounded-2xl text-sm max-w-[82%] leading-relaxed shadow-sm whitespace-pre-wrap ${
                   msg.role === "user"
                     ? "bg-halloween-orange text-white ml-auto rounded-tr-none shadow-[0_4px_12px_rgba(252,76,2,0.15)]"
                     : "bg-[#2a2b2e] text-zinc-200 border border-zinc-800 mr-auto rounded-tl-none"
                 }`}
               >
-                {msg.parts[0].text}
+                {formatMessageText(msg.parts[0]?.text)}
               </div>
             ))
           )}

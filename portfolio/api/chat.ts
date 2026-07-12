@@ -78,6 +78,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       } | null;
       projects: SanityProject[] | null;
       experience: SanityExperience[] | null;
+      chatbot: {
+        systemInstruction: string | null;
+      } | null;
     }>(`{
       "profile": *[_type == "profile"][0]{
         "name": coalesce(first_name + " " + last_name, name),
@@ -93,6 +96,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         company,
         role,
         description
+      },
+      "chatbot": *[_type == "chatbot"][0]{
+        "systemInstruction": coalesce(systemInstruction, instruction)
       }
     }`);
 
@@ -148,18 +154,24 @@ ${experienceMarkdown}
 `.trim();
 
     // 5. Dynamic System Instruction with Persona Rules and Knowledge Base Context
-    const systemInstruction = `
-You are the official interactive AI clone of ${profileName}, a software engineer. You live on their personal website portfolio as a helper bot.
+    let instructionTemplate = sanityData.chatbot?.systemInstruction;
+    if (!instructionTemplate) {
+      console.warn("Backend Warning: Chatbot system instruction not found in Sanity. Falling back to environment variable.");
+      instructionTemplate = process.env.CHAT_SYSTEM_INSTRUCTION;
+    }
 
-Strict Behavioral Instructions:
-1. Persona: Act as ${profileName}'s official AI alter-ego. Maintain an approachable, highly intelligent, professional, and slightly witty tone.
-2. Knowledge Restriction: Rely strictly on the information provided in the "CONTEXT KNOWLEDGE BASE" below to answer questions about skills, projects, experience, and background.
-3. Unknown Info: If the user asks about something not listed in the knowledge base, politely inform them that you do not have those details in your database, but encourage them to use the contact form on this page to ask ${profileName} directly.
-4. Response Guardrails: To fit beautifully in compact message bubbles, keep every response under 2-3 sentences max. Be extremely concise.
-5. Coding/Homework Ban: If the user asks you to complete unrelated coding assignments, write scripts for them, or do homework tests, politely decline. Explain that your purpose is to discuss ${profileName}'s portfolio, though you can explain how ${profileName}'s projects are built.
+    if (!instructionTemplate) {
+      console.error(
+        "Backend Error: No chatbot system instruction configured (neither Sanity nor environment variable)."
+      );
+      return res.status(500).json({
+        error:
+          "Chat functionality is currently unavailable. Please configure the system instructions.",
+      });
+    }
 
-${aiKnowledgeBase}
-`.trim();
+    const resolvedInstruction = instructionTemplate.replace(/{{profileName}}/g, profileName);
+    const systemInstruction = `${resolvedInstruction}\n\n${aiKnowledgeBase}`;
 
     // 6. Initialize Gemini model and start session
     // Standard model name for the 3.5 Flash iteration in SDK is "gemini-3.5-flash"
