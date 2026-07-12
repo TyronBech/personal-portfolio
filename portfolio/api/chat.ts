@@ -174,9 +174,9 @@ ${experienceMarkdown}
     const systemInstruction = `${resolvedInstruction}\n\n${aiKnowledgeBase}`;
 
     // 6. Initialize Gemini model and start session
-    // Standard model name for the 3.5 Flash iteration in SDK is "gemini-3.5-flash"
+    // Standard model name for the 2.5 Flash iteration in SDK is "gemini-2.5-flash"
     const model = genAI.getGenerativeModel({
-      model: "gemini-3.5-flash",
+      model: "gemini-2.5-flash",
       systemInstruction: systemInstruction,
     });
 
