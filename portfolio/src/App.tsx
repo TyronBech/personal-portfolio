@@ -7,6 +7,7 @@ import Experience from "@/pages/Experience";
 import Project from "@/pages/Project";
 import Contact from "@/pages/Contact";
 import CameraLoading from "@/components/CameraLoading";
+import { ChatBot } from "@/components/ChatBot";
 import { usePortfolio } from "@/hooks/usePortfolio";
 import { urlFor } from "@/data/sanity";
 
@@ -17,6 +18,7 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
     if (data && !loading) {
+      console.log("PORTFOLIO_DATA_DUMP:", JSON.stringify(data));
       // Gather images that need preloading
       const imageUrls = [
         data.profile_image ? urlFor(data.profile_image).url() : null,
@@ -26,7 +28,7 @@ function App(): React.JSX.Element {
       ].filter(Boolean) as string[];
 
       if (imageUrls.length === 0) {
-        setImagesLoaded(true);
+        setTimeout(() => setImagesLoaded(true), 0);
         return;
       }
 
@@ -71,6 +73,10 @@ function App(): React.JSX.Element {
           <Experience data={data} />
           <Project data={data} />
           <Contact data={data} />
+          <ChatBot 
+            ownerName={data ? `${data.first_name} ${data.last_name}` : undefined} 
+            aboutImageUrl={data?.about_image ? urlFor(data.about_image).url() : undefined}
+          />
         </>
       )}
     </div>
@@ -78,3 +84,4 @@ function App(): React.JSX.Element {
 }
 
 export default App;
+

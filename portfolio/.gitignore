@@ -23,4 +23,5 @@ Docker-instructions.md
 *.njsproj
 *.sln
 *.sw?
+.env
 commands.txt
