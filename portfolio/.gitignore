@@ -25,3 +25,8 @@ Docker-instructions.md
 *.sw?
 .env
 commands.txt
+
+# Temporary test files
+test-gemini.js
+test-models.html
+test.html
