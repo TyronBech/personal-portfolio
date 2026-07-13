@@ -173,8 +173,7 @@ ${experienceMarkdown}
     const resolvedInstruction = instructionTemplate.replace(/{{profileName}}/g, profileName);
     const systemInstruction = `${resolvedInstruction}\n\n${aiKnowledgeBase}`;
 
-    // 6. Initialize Gemini model and start session
-    // Standard model name for the 2.5 Flash iteration in SDK is "gemini-2.5-flash"
+    // Standard model name for the 3.5 Flash iteration in SDK is "gemini-3.5-flash"
     const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",
       systemInstruction: systemInstruction,
@@ -201,9 +200,31 @@ ${experienceMarkdown}
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     console.error("API handler failed:", error);
+
+    let userFriendlyError = "An unexpected error occurred while communicating with the AI backend.";
+    const status = (error && typeof error === "object" && "status" in error) ? (error as { status: unknown }).status : undefined;
+
+    const isQuota = status === 429 || 
+                    errorMessage.includes("429") || 
+                    errorMessage.toLowerCase().includes("quota") || 
+                    errorMessage.toLowerCase().includes("rate limit") ||
+                    errorMessage.toLowerCase().includes("too many requests");
+
+    const isTokenLimit = errorMessage.toLowerCase().includes("token") || 
+                         errorMessage.toLowerCase().includes("limit exceeded") || 
+                         errorMessage.toLowerCase().includes("context window") || 
+                         errorMessage.toLowerCase().includes("max tokens");
+
+    if (isQuota) {
+      userFriendlyError = "You have hit the AI model's rate limit or daily quota. Please wait a moment and try again.";
+    } else if (isTokenLimit) {
+      userFriendlyError = "The conversation exceeds the model's token limit. Please refresh to clear history and try again with a shorter message.";
+    } else if (status === 404 || errorMessage.includes("404") || errorMessage.toLowerCase().includes("not found")) {
+      userFriendlyError = "The requested AI model is currently unavailable. Please contact the administrator.";
+    }
+
     return res.status(500).json({
-      error:
-        "An unexpected error occurred while communicating with the AI backend.",
+      error: userFriendlyError,
       details: errorMessage,
     });
   }
