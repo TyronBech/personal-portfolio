@@ -175,7 +175,7 @@ ${experienceMarkdown}
 
     // Standard model name for the 3.5 Flash iteration in SDK is "gemini-3.5-flash"
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.5-flash",
       systemInstruction: systemInstruction,
     });
 
