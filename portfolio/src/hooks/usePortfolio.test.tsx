@@ -56,11 +56,20 @@ describe('usePortfolio Hook', () => {
       },
     ];
 
-    // Mock client.fetch returns profile, experiences, projects sequentially for Promise.all
+    const mockFeatured = [
+      {
+        _id: '1',
+        title: 'Featured Project',
+        description: 'A featured project description',
+      }
+    ];
+
+    // Mock client.fetch returns profile, experiences, projects, and featured sequentially for Promise.all
     (client.fetch as unknown as Mock)
       .mockResolvedValueOnce(mockProfile)
       .mockResolvedValueOnce(mockExperiences)
-      .mockResolvedValueOnce(mockProjects);
+      .mockResolvedValueOnce(mockProjects)
+      .mockResolvedValueOnce(mockFeatured);
 
     const { result } = renderHook(() => usePortfolio());
 
@@ -72,6 +81,7 @@ describe('usePortfolio Hook', () => {
       ...mockProfile,
       experiences: mockExperiences,
       projects: mockProjects,
+      featured: mockFeatured,
     });
   });
 
