@@ -89,7 +89,7 @@ export function FeaturedFullscreen({
       />
 
       {/* Content layer — above backdrop, pointer-events forwarded to root for click-to-close */}
-      <div className="relative z-10 flex flex-col items-center gap-5 px-6 w-full">
+      <div className="relative z-10 flex flex-col items-center gap-3 px-6 w-full">
         {/* Featured image — height-capped so all text fits within 100vh */}
         {featured.image && (
           <motion.img
@@ -105,7 +105,7 @@ export function FeaturedFullscreen({
 
         {/* Header */}
         <motion.h2
-          className="text-3xl sm:text-4xl lg:text-5xl font-special-gothic text-white text-center leading-tight"
+          className="text-xl sm:text-xl md:text-3xl lg:text-4xl font-special-gothic text-white text-center leading-tight"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.18 }}

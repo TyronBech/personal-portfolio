@@ -174,7 +174,7 @@ export function ProfileFlipCard({
           >
             <img
               src={profileImageUrl}
-              className="w-full object-cover rounded-full lg:rounded-t-[3rem] lg:rounded-b-none shadow-2xl lg:shadow-none select-none block"
+              className="w-full aspect-square lg:aspect-auto object-cover rounded-full lg:rounded-t-[3rem] lg:rounded-b-none shadow-2xl lg:shadow-none select-none block"
               alt="Profile Picture"
               draggable={false}
             />
@@ -211,7 +211,7 @@ export function ProfileFlipCard({
             )}
             {flipState === "flipped" && (
               <motion.div
-                className="absolute inset-0 rounded-full lg:rounded-t-[3rem] lg:rounded-b-none border-3 border-halloween-orange/0 hover:border-halloween-orange/80 transition-colors duration-300 flex items-end justify-center pb-4"
+                className="absolute inset-0 rounded-full lg:rounded-t-[3rem] lg:rounded-b-none border-3 border-halloween-orange/0 hover:border-halloween-orange/80 transition-colors duration-300 flex items-end lg:hidden justify-center pb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}

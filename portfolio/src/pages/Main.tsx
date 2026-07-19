@@ -69,14 +69,14 @@ function Main({ data }: MainProps): React.JSX.Element {
                   className={`relative inline-flex rounded-full h-2 w-2 ${data?.statuses.work ? "bg-green-500" : "bg-red-600"}`}
                 ></span>
               </span>
-              <span className="tracking-wide text-xs font-lexend capitalize">
+              <span className="tracking-wide text-xs md:text-sm lg:text-xs font-lexend capitalize">
                 {data?.statuses.work
                   ? "Available for work"
                   : "Currently employed"}
               </span>
             </div>
             {/* Role */}
-            <p className="text-white text-2xl lg:text-4xl xl:text-5xl tracking-wider font-lexend font-semibold text-center lg:text-left">
+            <p className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl tracking-wider font-lexend font-semibold text-center lg:text-left">
               {data?.role}
             </p>
           </motion.div>
@@ -88,7 +88,7 @@ function Main({ data }: MainProps): React.JSX.Element {
             style={{ willChange: "transform, opacity" }}
             className="flex flex-col items-center lg:w-5/9 lg:justify-self-end justify-center mt-4 lg:mt-0"
           >
-            <p className="text-zinc-400 text-sm lg:text-lg xl:text-xl tracking-wide font-lexend text-center lg:text-right max-w-md">
+            <p className="text-zinc-400 text-sm md:text-base lg:text-lg xl:text-xl tracking-wide font-lexend text-center lg:text-right max-w-md">
               {data?.message}
             </p>
           </motion.div>
