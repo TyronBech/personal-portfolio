@@ -43,6 +43,15 @@ export interface Project {
   project_image: SanityImageSource;
 }
 
+export interface Featured {
+  _id: string;
+  title: string;
+  header: string;
+  subHeader: string;
+  description: string;
+  image: SanityImageSource;
+}
+
 export interface DataProps {
   data: PortfolioData | null;
 }
@@ -71,4 +80,5 @@ export interface PortfolioData {
   }[];
   experiences: Experience[];
   projects: Project[];
+  featured: Featured[];
 }
