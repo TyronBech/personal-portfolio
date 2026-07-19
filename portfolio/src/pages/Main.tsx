@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { urlFor } from "@/data/sanity";
 import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
@@ -9,6 +9,12 @@ interface MainProps {
 }
 
 function Main({ data }: MainProps): React.JSX.Element {
+  const [isActivated] = useState(() => {
+    const featuredWithDate = data?.featured?.find(f => f.date);
+    const activationDate = featuredWithDate?.date || "2026-01-01";
+    return Date.now() >= new Date(activationDate).getTime();
+  });
+
   return (
     <div className="relative overflow-hidden w-screen lg:h-screen">
       {/* --- CONTAINER --- */}
@@ -25,6 +31,7 @@ function Main({ data }: MainProps): React.JSX.Element {
             profileImageUrl={urlFor(data!.profile_image).url()}
             featuredItems={data?.featured ?? []}
             className="w-48 md:w-72 lg:w-100 xl:w-118 aspect-square lg:aspect-auto"
+            isActivated={isActivated}
           />
         </motion.div>
 

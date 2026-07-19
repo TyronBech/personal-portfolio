@@ -8,7 +8,7 @@ async function fireSideConfetti() {
   const m = await import("canvas-confetti");
   const confetti = m.default as (options?: ConfettiOptions) => void;
   const colors = ["#ea580c", "#f97316", "#ffffff", "#a1a1aa"];
-  const duration = 1500;
+  const duration = 1300;
   const animationEnd = Date.now() + duration;
 
   (function frame() {

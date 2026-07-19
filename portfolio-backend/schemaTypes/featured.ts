@@ -28,6 +28,11 @@ export default {
       title: 'Image',
       type: 'image',
       options: { hotspot: true }
+    },
+    {
+      name: 'date',
+      title: 'Date',
+      type: 'date',
     }
   ]
 }

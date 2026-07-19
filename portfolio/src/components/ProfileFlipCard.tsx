@@ -11,12 +11,10 @@ import type { Options as ConfettiOptions } from "canvas-confetti";
 type FlipState = "normal" | "flipped" | "modal";
 
 interface ProfileFlipCardProps {
-  /** The front-face image URL (profile picture) */
   profileImageUrl: string;
-  /** All featured items fetched from Sanity */
   featuredItems: Featured[];
-  /** Tailwind/CSS class to match the original image's dimensions */
   className?: string;
+  isActivated: boolean;
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -33,7 +31,7 @@ async function fireConfetti(origin: { x: number; y: number }) {
   // Fireworks effect: 5 rapid 360-degree bursts around the card
   let bursts = 0;
   const maxBursts = 5;
-  
+
   const interval = setInterval(() => {
     if (bursts >= maxBursts) {
       clearInterval(interval);
@@ -73,6 +71,7 @@ export function ProfileFlipCard({
   profileImageUrl,
   featuredItems,
   className = "",
+  isActivated,
 }: ProfileFlipCardProps): React.JSX.Element {
   const [flipState, setFlipState] = useState<FlipState>("normal");
   const [featured, setFeatured] = useState<Featured | null>(null);
@@ -99,6 +98,8 @@ export function ProfileFlipCard({
     (e: React.MouseEvent) => {
       e.stopPropagation();
 
+      if (!isActivated) return;
+
       if (flipState === "normal") {
         const item = pickRandomFeatured();
         if (!item) {
@@ -118,7 +119,7 @@ export function ProfileFlipCard({
         return;
       }
     },
-    [flipState, pickRandomFeatured, getConfettiOrigin],
+    [flipState, pickRandomFeatured, getConfettiOrigin, isActivated],
   );
 
   const resetToNormal = useCallback(() => {
@@ -157,7 +158,7 @@ export function ProfileFlipCard({
             transformStyle: "preserve-3d",
             position: "relative",
             cursor:
-              flipState === "normal" || flipState === "flipped"
+              (isActivated && flipState === "normal") || flipState === "flipped"
                 ? "pointer"
                 : "default",
           }}
@@ -177,7 +178,7 @@ export function ProfileFlipCard({
               alt="Profile Picture"
               draggable={false}
             />
-            {flipState === "normal" && (
+            {flipState === "normal" && isActivated && (
               <motion.div
                 className="absolute inset-0 rounded-full lg:rounded-t-[3rem] lg:rounded-b-none border-3 border-halloween-orange/0 hover:border-halloween-orange/80 transition-colors duration-300"
                 transition={{ duration: 0.2 }}

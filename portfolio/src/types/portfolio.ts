@@ -50,6 +50,7 @@ export interface Featured {
   subHeader: string;
   description: string;
   image: SanityImageSource;
+  date?: string;
 }
 
 export interface DataProps {
