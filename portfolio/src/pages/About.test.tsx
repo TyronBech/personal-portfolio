@@ -38,6 +38,7 @@ const mockData: PortfolioData = {
   skills: [],
   experiences: [],
   projects: [],
+  featured: [],
 };
 
 describe('About Component', () => {

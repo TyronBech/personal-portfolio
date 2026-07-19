@@ -1,29 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { urlFor } from "@/data/sanity";
 import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
+import { ProfileFlipCard } from "@/components/ProfileFlipCard";
 
 interface MainProps {
   data: PortfolioData | null;
 }
 
 function Main({ data }: MainProps): React.JSX.Element {
+  const [isActivated] = useState(() => {
+    const featuredWithDate = data?.featured?.find(f => f.date);
+    const activationDate = featuredWithDate?.date || "2026-01-01";
+    return Date.now() >= new Date(activationDate).getTime();
+  });
+
   return (
     <div className="relative overflow-hidden w-screen lg:h-screen">
       {/* --- CONTAINER --- */}
       <div className="relative w-full h-full flex flex-col md:justify-start mt-10 lg:mt-0 lg:justify-center items-center lg:block">
-        {/* 1. PROFILE PICTURE */}
-        <motion.div 
+        {/* 1. PROFILE PICTURE (interactive flip card) */}
+        <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           style={{ willChange: "transform, opacity" }}
           className="z-10 order-1 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2"
         >
-          <img
-            src={urlFor(data!.profile_image).url()}
-            className="w-48 md:w-72 lg:w-100 xl:w-118 aspect-square text-white lg:aspect-auto object-cover rounded-full lg:rounded-t-[3rem] lg:rounded-b-none shadow-2xl lg:shadow-none"
-            alt="Profile Picture"
+          <ProfileFlipCard
+            profileImageUrl={urlFor(data!.profile_image).url()}
+            featuredItems={data?.featured ?? []}
+            className="w-48 md:w-72 lg:w-100 xl:w-118 aspect-square lg:aspect-auto"
+            isActivated={isActivated}
           />
         </motion.div>
 
@@ -42,7 +50,7 @@ function Main({ data }: MainProps): React.JSX.Element {
         </motion.div>
 
         {/* 3. DATA (Status, Role, Message) */}
-        <div className="z-40 order-3 mt-6 lg:mt-0 w-full px-6 lg:absolute lg:inset-0 lg:py-12 lg:grid lg:grid-cols-2 lg:items-center">
+        <div className="z-40 order-3 mt-6 lg:mt-0 w-full px-6 lg:absolute lg:inset-0 lg:py-12 lg:grid lg:grid-cols-2 lg:items-center pointer-events-none">
           {/* Left Side (Status & Role) */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}

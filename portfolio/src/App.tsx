@@ -24,7 +24,8 @@ function App(): React.JSX.Element {
         data.profile_image ? urlFor(data.profile_image).url() : null,
         data.about_image ? urlFor(data.about_image).url() : null,
         data.experience_image ? urlFor(data.experience_image).url() : null,
-        ...(data.projects?.map(project => project.project_image ? urlFor(project.project_image).url() : null) || [])
+        ...(data.projects?.map(project => project.project_image ? urlFor(project.project_image).url() : null) || []),
+        ...(data.featured?.map(feature => feature.image ? urlFor(feature.image).url() : null) || [])
       ].filter(Boolean) as string[];
 
       if (imageUrls.length === 0) {
