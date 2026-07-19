@@ -49,6 +49,7 @@ const mockData: PortfolioData = {
     },
   ],
   projects: [],
+  featured: [],
 };
 
 describe('Experience Component', () => {
