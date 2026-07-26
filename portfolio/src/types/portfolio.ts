@@ -28,6 +28,7 @@ export interface Experience {
   company: string;
   role: string;
   description: string[];
+  additional_info?: string;
   start_date: string;
   end_year: string | null;
 }
@@ -36,6 +37,7 @@ export interface Project {
   id: number;
   name: string;
   description: string;
+  additional_info?: string;
   technologies: string[];
   repository: string;
   type: string;

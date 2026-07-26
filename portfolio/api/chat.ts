@@ -10,6 +10,7 @@ interface RequestBody {
 interface SanityProject {
   title: string | null;
   description: string | null;
+  additional_info: string | null;
   technologies: string[] | null;
 }
 
@@ -17,6 +18,7 @@ interface SanityExperience {
   company: string | null;
   role: string | null;
   description: string[] | string | null;
+  additional_info: string | null;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -90,12 +92,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       "projects": *[_type == "project"]{
         "title": coalesce(name, title),
         description,
+        additional_info,
         technologies
       },
       "experience": *[_type == "experience"]{
         company,
         role,
-        description
+        description,
+        additional_info
       },
       "chatbot": *[_type == "chatbot"][0]{
         "systemInstruction": coalesce(systemInstruction, instruction)
@@ -119,7 +123,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               const tech = Array.isArray(p.technologies)
                 ? p.technologies.filter(Boolean).join(", ")
                 : "";
-              return `- **${title}**: ${desc}${tech ? ` (Built with: ${tech})` : ""}`;
+              const additionalInfo = p.additional_info?.trim()
+                ? `\n  Additional AI context: ${p.additional_info.trim()}`
+                : "";
+              return `- **${title}**: ${desc}${tech ? ` (Built with: ${tech})` : ""}${additionalInfo}`;
             })
             .join("\n")
         : "- No projects listed currently.";
@@ -133,7 +140,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               const desc = Array.isArray(e.description)
                 ? e.description.filter(Boolean).join(" ")
                 : e.description || "No job details provided.";
-              return `- **${role}** at **${company}**: ${desc}`;
+              const additionalInfo = e.additional_info?.trim()
+                ? `\n  Additional AI context: ${e.additional_info.trim()}`
+                : "";
+              return `- **${role}** at **${company}**: ${desc}${additionalInfo}`;
             })
             .join("\n")
         : "- No work experience listed currently.";

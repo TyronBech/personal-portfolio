@@ -6,6 +6,7 @@ export default {
     { name: 'id', title: 'ID', type: 'number' },
     { name: 'name', title: 'Project Name', type: 'string' },
     { name: 'description', title: 'Description', type: 'text' },
+    { name: 'additional_info', title: 'Additional Info', type: 'text' },
     { 
       name: 'technologies', 
       title: 'Technologies Used', 
