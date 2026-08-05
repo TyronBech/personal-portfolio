@@ -2,14 +2,24 @@ import PUPT from "@/assets/svg/PUPT_Logo.svg";
 import { urlFor } from "@/data/sanity";
 import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
+import { useSeasonalTheme } from "@/hooks/useSeasonalTheme";
+import { BloodyHand } from "@/components/halloween";
 
 interface AboutProps {
   data: PortfolioData | null;
 }
 
 function About({ data }: AboutProps): React.JSX.Element {
+  const { activeTheme, seasonalAboutImageUrl } = useSeasonalTheme(data);
+
+  const aboutImgSrc =
+    seasonalAboutImageUrl ?? (data?.about_image ? urlFor(data.about_image).url() : "");
+
   return (
-    <div id="about" className="overflow-hidden w-screen lg:h-screen items-center justify-center flex flex-col">
+    <div id="about" className="relative overflow-hidden w-screen lg:h-screen items-center justify-center flex flex-col">
+      {/* Halloween Bloody Hand Component */}
+      {activeTheme === "halloween" && <BloodyHand />}
+
       <div className="grid md:grid-cols-2 content-center">
         {/* Left Side - Image */}
         <motion.div 
@@ -20,7 +30,7 @@ function About({ data }: AboutProps): React.JSX.Element {
           style={{ willChange: "transform, opacity" }}
           className="hidden md:flex md:items-center md:justify-center"
         >
-          <img src={urlFor(data!.about_image).url()} alt={data?.about_image_alt} className="w-1/2 rounded-3xl text-white" />
+          <img src={aboutImgSrc} alt={data?.about_image_alt ?? "About Me"} className="w-1/2 rounded-3xl text-white" />
         </motion.div>
         {/* Right Side - Text Content */}
         <motion.div 

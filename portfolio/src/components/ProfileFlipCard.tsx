@@ -15,6 +15,7 @@ interface ProfileFlipCardProps {
   featuredItems: Featured[];
   className?: string;
   isActivated: boolean;
+  seasonalTheme?: "halloween" | "christmas" | "birthday" | "normal";
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -72,10 +73,21 @@ export function ProfileFlipCard({
   featuredItems,
   className = "",
   isActivated,
+  seasonalTheme = "normal",
 }: ProfileFlipCardProps): React.JSX.Element {
   const [flipState, setFlipState] = useState<FlipState>("normal");
   const [featured, setFeatured] = useState<Featured | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  const borderHoverClass =
+    seasonalTheme === "christmas"
+      ? "border-red-500/0 hover:border-red-500/80"
+      : seasonalTheme === "halloween"
+      ? "border-orange-500/0 hover:border-orange-500/80"
+      : seasonalTheme === "birthday"
+      ? "border-amber-400/0 hover:border-amber-400/80"
+      : "border-halloween-orange/0 hover:border-halloween-orange/80";
+
 
   const pickRandomFeatured = useCallback((): Featured | null => {
     if (!featuredItems || featuredItems.length === 0) return null;
@@ -180,7 +192,7 @@ export function ProfileFlipCard({
             />
             {flipState === "normal" && isActivated && (
               <motion.div
-                className="absolute inset-0 rounded-full lg:rounded-t-[3rem] lg:rounded-b-none border-3 border-halloween-orange/0 hover:border-halloween-orange/80 transition-colors duration-300"
+                className={`absolute inset-0 rounded-full lg:rounded-t-[3rem] lg:rounded-b-none border-3 ${borderHoverClass} transition-colors duration-300`}
                 transition={{ duration: 0.2 }}
               />
             )}
