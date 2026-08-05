@@ -64,12 +64,22 @@ describe('usePortfolio Hook', () => {
       }
     ];
 
-    // Mock client.fetch returns profile, experiences, projects, and featured sequentially for Promise.all
+    const mockSeasonal = [
+      {
+        _id: 's1',
+        name: 'halloween',
+        start_date: '10-24',
+        end_date: '11-02',
+      }
+    ];
+
+    // Mock client.fetch returns profile, experiences, projects, featured, and seasonal sequentially for Promise.all
     (client.fetch as unknown as Mock)
       .mockResolvedValueOnce(mockProfile)
       .mockResolvedValueOnce(mockExperiences)
       .mockResolvedValueOnce(mockProjects)
-      .mockResolvedValueOnce(mockFeatured);
+      .mockResolvedValueOnce(mockFeatured)
+      .mockResolvedValueOnce(mockSeasonal);
 
     const { result } = renderHook(() => usePortfolio());
 
@@ -82,6 +92,7 @@ describe('usePortfolio Hook', () => {
       experiences: mockExperiences,
       projects: mockProjects,
       featured: mockFeatured,
+      seasonalDecorations: mockSeasonal,
     });
   });
 
@@ -98,7 +109,5 @@ describe('usePortfolio Hook', () => {
 
     expect(result.current.data).toBeNull();
     expect(consoleErrorSpy).toHaveBeenCalled();
-    
-    consoleErrorSpy.mockRestore();
   });
 });
