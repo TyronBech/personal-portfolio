@@ -1,17 +1,29 @@
 import { Mail, Phone, Linkedin, Github } from "lucide-react";
 import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
+import { useSeasonalTheme } from "@/hooks/useSeasonalTheme";
+import { PumpkinDecoration } from "@/components/halloween";
+import { CrimeSceneBanner } from "@/components/halloween";
 
 interface ContactProps {
   data: PortfolioData | null;
 }
 
 function Contact({ data }: ContactProps): React.JSX.Element {
+  const { activeTheme } = useSeasonalTheme(data);
+
+  const text = activeTheme ? "text-sm md:text-base text-white font-lexend max-w-md mx-auto" : "text-sm md:text-base text-zinc-400 font-lexend max-w-md mx-auto";
+
   return (
     <div
       id="contact"
-      className="w-screen flex flex-col items-center justify-center px-6 py-24 overflow-hidden"
+      className="relative w-screen flex flex-col items-center justify-center px-6 py-24 overflow-hidden"
     >
+      {/* Halloween Pumpkin Component at Very Bottom Left */}
+      {activeTheme === "halloween" && <PumpkinDecoration />}
+      {/* Halloween Crime Scene Banner Component */}
+      {activeTheme === "halloween" && <CrimeSceneBanner />}
+
       {/* Header Section */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
@@ -19,16 +31,16 @@ function Contact({ data }: ContactProps): React.JSX.Element {
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.6 }}
         style={{ willChange: "transform, opacity" }}
-        className="text-center mb-12"
+        className="text-center mb-12 z-10"
       >
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-4">
           Let's <span className="text-halloween-orange">Connect</span>
         </h1>
-        <p className="text-sm md:text-base text-zinc-400 font-lexend max-w-md mx-auto">
+        <p className={text}>
           I'm always open to discussing new projects, creative ideas, or
           opportunities to be part of your vision.
         </p>
-        <p className="text-sm md:text-base text-zinc-400 font-lexend max-w-md mx-auto">
+        <p className={text}>
           Feel free to reach out through any of the platforms below!
         </p>
       </motion.div>
@@ -40,7 +52,7 @@ function Contact({ data }: ContactProps): React.JSX.Element {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, delay: 0.2, type: "spring", bounce: 0.3 }}
         style={{ willChange: "transform, opacity" }}
-        className="w-full max-w-4xl bg-white/5 border border-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl"
+        className="w-full max-w-4xl bg-white/5 border border-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl z-10"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Side: Direct Contact */}
@@ -59,10 +71,10 @@ function Contact({ data }: ContactProps): React.JSX.Element {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-xs text-zinc-500 font-lexend uppercase tracking-widest">
-                    Email Me
+                  <p className="text-xs text-zinc-500 uppercase tracking-wider font-lexend font-medium">
+                    Email
                   </p>
-                  <p className="text-xs md:text-base font-lexend">
+                  <p className="font-lexend font-medium text-sm md:text-base">
                     {data?.email}
                   </p>
                 </div>
@@ -77,10 +89,10 @@ function Contact({ data }: ContactProps): React.JSX.Element {
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-xs text-zinc-500 font-lexend uppercase tracking-widest">
-                    Call Me
+                  <p className="text-xs text-zinc-500 uppercase tracking-wider font-lexend font-medium">
+                    Phone
                   </p>
-                  <p className="text-xs md:text-base font-lexend">
+                  <p className="font-lexend font-medium text-sm md:text-base">
                     {data?.phone}
                   </p>
                 </div>
@@ -88,51 +100,44 @@ function Contact({ data }: ContactProps): React.JSX.Element {
             </div>
           </div>
 
-          {/* Right Side: Socials & Extras */}
-          <div className="flex flex-col justify-between">
-            <h3 className="text-2xl font-special-gothic text-white italic mb-6 md:mb-0">
-              Social Spaces
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-4 mt-8">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                href={data?.socials?.[1]?.url}
-                target="_blank"
-                className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
-              >
-                <Linkedin className="w-8 h-8 text-zinc-400 group-hover:text-halloween-orange mb-2" />
-                <span className="text-sm md:text-base font-lexend text-zinc-300">
-                  {data?.socials?.[1]?.name}
-                </span>
-              </motion.a>
+          {/* Right Side: Social Media */}
+          <div className="space-y-8 flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-special-gothic text-white italic mb-6">
+                Connect Elsewhere
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {data?.socials.map((social) => {
+                  let Icon = Mail;
+                  if (social.name.toLowerCase().includes("linkedin"))
+                    Icon = Linkedin;
+                  if (social.name.toLowerCase().includes("github"))
+                    Icon = Github;
 
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                href={data?.socials?.[0]?.url}
-                target="_blank"
-                className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-halloween-orange/10 hover:border-halloween-orange/50 transition-all group"
-              >
-                <Github className="w-8 h-8 text-zinc-400 group-hover:text-halloween-orange mb-2" />
-                <span className="text-sm font-lexend text-zinc-300">
-                  {data?.socials?.[0]?.name}
-                </span>
-              </motion.a>
+                  return (
+                    <motion.a
+                      key={social.name}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/10 hover:border-halloween-orange/50 hover:bg-white/10 transition-all group"
+                    >
+                      <Icon className="w-5 h-5 text-zinc-400 group-hover:text-halloween-orange transition-colors" />
+                      <span className="font-lexend font-medium text-sm text-zinc-300 group-hover:text-white transition-colors">
+                        {social.name}
+                      </span>
+                    </motion.a>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* A "Status" indicator makes it feel live */}
-            <div className="mt-8 flex items-center gap-2 text-zinc-500 text-sm font-lexend">
-              <span className="relative flex h-2 w-2">
-                <span
-                  className={`animate-ping absolute inline-flex h-full w-full rounded-full ${data?.statuses.projects ? "bg-green-400" : "bg-red-500"} opacity-75`}
-                ></span>
-                <span
-                  className={`relative inline-flex rounded-full h-2 w-2 ${data?.statuses.projects ? "bg-green-500" : "bg-red-600"}`}
-                ></span>
-              </span>
-              <span className="tracking-wide text-xs font-lexend capitalize">
-                {data?.statuses.projects
-                  ? "Available for new projects"
-                  : "Currently building something awesome"}
+            <div className="pt-6 border-t border-white/10 flex justify-between items-center text-xs text-zinc-500 font-lexend">
+              <span>Location:</span>
+              <span className="text-zinc-300 font-medium">
+                {data?.address.city}, {data?.address.country}
               </span>
             </div>
           </div>

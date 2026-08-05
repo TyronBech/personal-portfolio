@@ -60,7 +60,7 @@ function Project({ data }: DataProps): React.JSX.Element {
   return (
     <div
       id="projects"
-      className="w-full lg:min-h-screen items-center justify-center flex flex-col pt-12 pb-2"
+      className="relative w-full lg:min-h-screen items-center justify-center flex flex-col pt-12 pb-2 overflow-hidden"
     >
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-6">
         Projects
@@ -73,7 +73,7 @@ function Project({ data }: DataProps): React.JSX.Element {
         viewport={{ once: true, margin: "-100px" }}
         onAnimationComplete={() => setIsRendered(true)}
         style={isRendered ? undefined : { willChange: "opacity" }}
-        className="w-full max-w-[97%] mx-auto px-4 md:px-8"
+        className="w-full max-w-[97%] mx-auto px-4 md:px-8 z-10"
       >
         {sortedProjects.length > 0 && (
           <div

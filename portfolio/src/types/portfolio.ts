@@ -55,6 +55,17 @@ export interface Featured {
   date?: string;
 }
 
+export interface SeasonalDecoration {
+  _id?: string;
+  name: string;
+  title?: string;
+  start_date: string;
+  end_date: string;
+  hero_image?: SanityImageSource;
+  about_image?: SanityImageSource;
+  is_active?: boolean;
+}
+
 export interface DataProps {
   data: PortfolioData | null;
 }
@@ -84,4 +95,5 @@ export interface PortfolioData {
   experiences: Experience[];
   projects: Project[];
   featured: Featured[];
+  seasonalDecorations?: SeasonalDecoration[];
 }

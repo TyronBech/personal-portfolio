@@ -1,6 +1,8 @@
 import { urlFor } from "@/data/sanity";
 import type { DataProps } from "@/types/portfolio";
 import { motion } from "framer-motion";
+import { useSeasonalTheme } from "@/hooks/useSeasonalTheme";
+import { BloodScratch } from "@/components/halloween";
 
 const parseStartDate = (dateStr: string): Date => {
   const months: Record<string, number> = {
@@ -22,6 +24,8 @@ const parseStartDate = (dateStr: string): Date => {
 };
 
 function Experience({ data }: DataProps): React.JSX.Element {
+  const { activeTheme } = useSeasonalTheme(data);
+
   const sortedExperiences = data?.experiences
     ? [...data.experiences].sort(
         (a, b) =>
@@ -31,7 +35,10 @@ function Experience({ data }: DataProps): React.JSX.Element {
     : [];
 
   return (
-    <div id="experience" className="overflow-hidden w-screen lg:py-10">
+    <div id="experience" className="relative overflow-hidden w-screen lg:py-10">
+      {/* Halloween Blood Scratch Component */}
+      {activeTheme === "halloween" && <BloodScratch />}
+
       <div className="grid lg:grid-cols-2">
         {/* Left Side - Content */}
         <div className="flex items-center justify-center">
@@ -56,33 +63,24 @@ function Experience({ data }: DataProps): React.JSX.Element {
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.5, delay: index * 0.15 }}
                     style={{ willChange: "transform, opacity" }}
-                    className="mb-10 ml-6 md:ml-8"
+                    className="mb-7 ml-6 md:ml-8"
                   >
-                    <p className="mb-2 text-sm font-normal leading-none text-zinc-500 font-lexend">
-                      {experience.start_date} -{" "}
-                      {experience.end_year ?? "Present"}
-                    </p>
-                    <h3 className="text-lg tracking-wide md:text-xl font-bold mb-3">
-                      <span className="text-halloween-orange">
-                        {experience.role}
-                      </span>
-                      <span className="text-gray-300">
-                        {" "}
-                        at {experience.company}
-                      </span>
+                    <span className="text-xs md:text-sm font-lexend text-zinc-400">
+                      {experience.start_date} - {experience.end_year ?? "Present"}
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-lexend font-bold text-white mt-1">
+                      {experience.role}
                     </h3>
-                    <ul className="space-y-2 text-zinc-400 text-sm md:text-base tracking-normal leading-5.5 font-lexend">
-                      {(Array.isArray(experience.description)
-                        ? experience.description
-                        : experience.description
-                          ? [experience.description]
-                          : []
-                      ).map((item, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-halloween-orange mr-3 text-lg leading-none mt-0.5">
-                            •
-                          </span>
-                          <span>{item}</span>
+                    <h4 className="text-sm md:text-base font-lexend text-halloween-orange font-medium">
+                      {experience.company}
+                    </h4>
+                    <ul className="mt-3 space-y-2">
+                      {experience.description.map((desc, descIndex) => (
+                        <li
+                          key={descIndex}
+                          className="text-zinc-400 text-sm md:text-base font-lexend list-disc ml-4"
+                        >
+                          {desc}
                         </li>
                       ))}
                     </ul>
@@ -92,25 +90,24 @@ function Experience({ data }: DataProps): React.JSX.Element {
             </div>
           </div>
         </div>
+
         {/* Right Side - Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, type: "spring", bounce: 0.4 }}
-          style={{ willChange: "transform, opacity" }}
-          className="hidden lg:flex items-center justify-center"
-        >
-          <img
-            src={urlFor(data!.experience_image).url()}
-            alt={data?.experience_image_alt}
-            className="w-2/3 rounded-3xl"
-            style={{
-              filter:
-                "saturate(2.35) sepia(0.2) hue-rotate(-10deg) brightness(0.8) drop-shadow(0 30px 12px rgba(0,0,0,0.2)) drop-shadow(0 8px 18px rgba(0,0,0,0.15))",
-            }}
-          />
-        </motion.div>
+        {data?.experience_image && (
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            style={{ willChange: "transform, opacity" }}
+            className="hidden lg:flex items-center justify-center p-8"
+          >
+            <img
+              src={urlFor(data.experience_image).url()}
+              alt={data.experience_image_alt ?? "Experience"}
+              className="w-2/3 max-w-lg rounded-3xl object-cover"
+            />
+          </motion.div>
+        )}
       </div>
     </div>
   );

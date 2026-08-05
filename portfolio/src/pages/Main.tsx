@@ -3,6 +3,9 @@ import { urlFor } from "@/data/sanity";
 import type { PortfolioData } from "@/types/portfolio";
 import { motion } from "framer-motion";
 import { ProfileFlipCard } from "@/components/ProfileFlipCard";
+import { useSeasonalTheme } from "@/hooks/useSeasonalTheme";
+import { SeasonalDecorations } from "@/components/SeasonalDecorations";
+import { SpiderWebs } from "@/components/halloween";
 
 interface MainProps {
   data: PortfolioData | null;
@@ -15,8 +18,20 @@ function Main({ data }: MainProps): React.JSX.Element {
     return Date.now() >= new Date(activationDate).getTime();
   });
 
+  const { activeTheme, seasonalProfileImageUrl } = useSeasonalTheme(data);
+
+  // Use seasonal image from Sanity if available during active theme, else default profile image
+  const profileImageUrl =
+    seasonalProfileImageUrl ?? (data?.profile_image ? urlFor(data.profile_image).url() : "");
+
   return (
     <div className="relative overflow-hidden w-screen lg:h-screen">
+      {/* Dynamic Seasonal Background & Floating PNG Effects */}
+      <SeasonalDecorations theme={activeTheme} />
+
+      {/* Halloween Top Corner Webs Component */}
+      {activeTheme === "halloween" && <SpiderWebs />}
+
       {/* --- CONTAINER --- */}
       <div className="relative w-full h-full flex flex-col md:justify-start mt-10 lg:mt-0 lg:justify-center items-center lg:block">
         {/* 1. PROFILE PICTURE (interactive flip card) */}
@@ -28,10 +43,11 @@ function Main({ data }: MainProps): React.JSX.Element {
           className="z-10 order-1 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2"
         >
           <ProfileFlipCard
-            profileImageUrl={urlFor(data!.profile_image).url()}
+            profileImageUrl={profileImageUrl}
             featuredItems={data?.featured ?? []}
             className="w-48 md:w-72 lg:w-100 xl:w-118 aspect-square lg:aspect-auto"
             isActivated={isActivated}
+            seasonalTheme={activeTheme}
           />
         </motion.div>
 
