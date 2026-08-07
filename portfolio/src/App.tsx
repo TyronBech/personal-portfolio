@@ -18,7 +18,6 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
     if (data && !loading) {
-      console.log("PORTFOLIO_DATA_DUMP:", JSON.stringify(data));
       // Gather images that need preloading
       const imageUrls = [
         data.profile_image ? urlFor(data.profile_image).url() : null,

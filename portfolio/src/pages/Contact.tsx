@@ -74,7 +74,7 @@ function Contact({ data }: ContactProps): React.JSX.Element {
                   <p className="text-xs text-zinc-500 uppercase tracking-wider font-lexend font-medium">
                     Email
                   </p>
-                  <p className="font-lexend font-medium text-sm md:text-base">
+                  <p className="font-lexend font-medium text-xs md:text-base">
                     {data?.email}
                   </p>
                 </div>
@@ -92,7 +92,7 @@ function Contact({ data }: ContactProps): React.JSX.Element {
                   <p className="text-xs text-zinc-500 uppercase tracking-wider font-lexend font-medium">
                     Phone
                   </p>
-                  <p className="font-lexend font-medium text-sm md:text-base">
+                  <p className="font-lexend font-medium text-xs md:text-base">
                     {data?.phone}
                   </p>
                 </div>
@@ -125,7 +125,7 @@ function Contact({ data }: ContactProps): React.JSX.Element {
                       className="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/10 hover:border-halloween-orange/50 hover:bg-white/10 transition-all group"
                     >
                       <Icon className="w-5 h-5 text-zinc-400 group-hover:text-halloween-orange transition-colors" />
-                      <span className="font-lexend font-medium text-sm text-zinc-300 group-hover:text-white transition-colors">
+                      <span className="font-lexend font-medium text-xs md:text-sm text-zinc-300 group-hover:text-white transition-colors">
                         {social.name}
                       </span>
                     </motion.a>
