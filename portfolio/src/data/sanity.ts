@@ -11,6 +11,14 @@ export const client = createClient({
 
 const builder = createImageUrlBuilder(client);
 
+/**
+ * Returns a Sanity image URL builder with CDN-level optimizations pre-applied:
+ * Callers can still chain additional transforms (e.g., `.width(800)`) on the returned builder.
+ */
 export function urlFor(source: SanityImageSource) {
-  return builder.image(source);
+  return builder
+    .image(source)
+    .auto('format')
+    .quality(80)
+    .fit('max');
 }
