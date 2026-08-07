@@ -10,6 +10,7 @@ import CameraLoading from "@/components/CameraLoading";
 import { ChatBot } from "@/components/ChatBot";
 import { usePortfolio } from "@/hooks/usePortfolio";
 import { urlFor } from "@/data/sanity";
+import { determineActiveTheme } from "@/lib/seasonalConfig";
 
 function App(): React.JSX.Element {
   const { data, loading } = usePortfolio();
@@ -18,18 +19,16 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
     if (data && !loading) {
-      console.log("PORTFOLIO_DATA_DUMP:", JSON.stringify(data));
-      // Gather images that need preloading
+      const activeDecoration = determineActiveTheme(data.seasonalDecorations).decoration;
+
       const imageUrls = [
         data.profile_image ? urlFor(data.profile_image).url() : null,
         data.about_image ? urlFor(data.about_image).url() : null,
         data.experience_image ? urlFor(data.experience_image).url() : null,
         ...(data.projects?.map(project => project.project_image ? urlFor(project.project_image).url() : null) || []),
         ...(data.featured?.map(feature => feature.image ? urlFor(feature.image).url() : null) || []),
-        ...(data.seasonalDecorations?.flatMap(s => [
-          s.hero_image ? urlFor(s.hero_image).url() : null,
-          s.about_image ? urlFor(s.about_image).url() : null,
-        ]) || [])
+        activeDecoration?.hero_image ? urlFor(activeDecoration.hero_image).url() : null,
+        activeDecoration?.about_image ? urlFor(activeDecoration.about_image).url() : null,
       ].filter(Boolean) as string[];
 
       if (imageUrls.length === 0) {

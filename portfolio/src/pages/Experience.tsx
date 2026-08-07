@@ -71,14 +71,14 @@ function Experience({ data }: DataProps): React.JSX.Element {
                     <h3 className="text-xl md:text-2xl font-lexend font-bold text-white mt-1">
                       {experience.role}
                     </h3>
-                    <h4 className="text-sm md:text-base font-lexend text-halloween-orange font-medium">
+                    <h4 className="text-sm md:text-lg font-lexend text-halloween-orange font-medium">
                       {experience.company}
                     </h4>
                     <ul className="mt-3 space-y-2">
                       {experience.description.map((desc, descIndex) => (
                         <li
                           key={descIndex}
-                          className="text-zinc-400 text-sm md:text-base font-lexend list-disc ml-4"
+                          className="text-zinc-400 text-xs md:text-base font-lexend list-disc ml-4"
                         >
                           {desc}
                         </li>
@@ -104,7 +104,7 @@ function Experience({ data }: DataProps): React.JSX.Element {
             <img
               src={urlFor(data.experience_image).url()}
               alt={data.experience_image_alt ?? "Experience"}
-              className="w-2/3 max-w-lg rounded-3xl object-cover"
+              className="w-2/3 max-w-lg rounded-3xl object-cover saturate-180"
             />
           </motion.div>
         )}

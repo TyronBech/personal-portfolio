@@ -20,7 +20,6 @@ function Main({ data }: MainProps): React.JSX.Element {
 
   const { activeTheme, seasonalProfileImageUrl } = useSeasonalTheme(data);
 
-  // Use seasonal image from Sanity if available during active theme, else default profile image
   const profileImageUrl =
     seasonalProfileImageUrl ?? (data?.profile_image ? urlFor(data.profile_image).url() : "");
 
