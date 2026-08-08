@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useSeasonalTheme } from "@/hooks/useSeasonalTheme";
 import { PumpkinDecoration } from "@/components/halloween";
 import { CrimeSceneBanner } from "@/components/halloween";
+import { Gift, ChristmasLights } from "@/components/christmas";
 
 interface ContactProps {
   data: PortfolioData | null;
@@ -17,12 +18,23 @@ function Contact({ data }: ContactProps): React.JSX.Element {
   return (
     <div
       id="contact"
-      className="relative w-screen flex flex-col items-center justify-center px-6 py-24 overflow-hidden"
+      className="relative w-screen flex flex-col items-center justify-center px-6 py-24"
     >
-      {/* Halloween Pumpkin Component at Very Bottom Left */}
-      {activeTheme === "halloween" && <PumpkinDecoration />}
-      {/* Halloween Crime Scene Banner Component */}
-      {activeTheme === "halloween" && <CrimeSceneBanner />}
+      {/* Halloween Components */}
+      {activeTheme === "halloween" && (
+        <>
+          <PumpkinDecoration />
+          <CrimeSceneBanner />
+        </>
+      )}
+
+      {/* Gift Component for Christmas at Very Bottom Left */}
+      {activeTheme === "christmas" && (
+        <>
+          <ChristmasLights />
+          <Gift />
+        </>
+      )}
 
       {/* Header Section */}
       <motion.div 

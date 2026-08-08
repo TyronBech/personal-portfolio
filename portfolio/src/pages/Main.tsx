@@ -6,6 +6,7 @@ import { ProfileFlipCard } from "@/components/ProfileFlipCard";
 import { useSeasonalTheme } from "@/hooks/useSeasonalTheme";
 import { SeasonalDecorations } from "@/components/SeasonalDecorations";
 import { SpiderWebs, Spiders } from "@/components/halloween";
+import { Stars, ChristmasBalls } from "@/components/christmas";
 
 interface MainProps {
   data: PortfolioData | null;
@@ -33,6 +34,14 @@ function Main({ data }: MainProps): React.JSX.Element {
         <>
           <SpiderWebs />
           <Spiders />
+        </>
+      )}
+
+      {/* Christmas Theme Components */}
+      {activeTheme === "christmas" && (
+        <>
+          <ChristmasBalls />
+          <Stars />
         </>
       )}
 
