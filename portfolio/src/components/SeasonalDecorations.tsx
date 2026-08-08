@@ -23,7 +23,7 @@ function HalloweenDecorations(): React.JSX.Element {
   return (
     <>
       {/* Center Screen Halloween Ambient Blur Glow */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 md:w-175 h-125 md:h-175 bg-orange-600/15 rounded-full blur-[140px] pointer-events-none z-0 opacity-25" />
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 md:w-175 h-125 md:h-175 bg-orange-600/15 rounded-full blur-[140px] pointer-events-none z-0 opacity-30" />
     </>
   );
 }

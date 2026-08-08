@@ -3,6 +3,7 @@ import type { DataProps } from "@/types/portfolio";
 import { motion } from "framer-motion";
 import { useSeasonalTheme } from "@/hooks/useSeasonalTheme";
 import { BloodScratch } from "@/components/halloween";
+import { Bells } from "@/components/christmas";
 
 const parseStartDate = (dateStr: string): Date => {
   const months: Record<string, number> = {
@@ -35,7 +36,7 @@ function Experience({ data }: DataProps): React.JSX.Element {
     : [];
 
   return (
-    <div id="experience" className="relative overflow-hidden w-screen lg:py-10">
+    <div id="experience" className="relative overflow-hidden w-screen pt-16 md:pt-24 lg:pt-16">
       {/* Halloween Blood Scratch Component */}
       {activeTheme === "halloween" && <BloodScratch />}
 
@@ -49,8 +50,10 @@ function Experience({ data }: DataProps): React.JSX.Element {
               viewport={{ once: true, amount: 0.8 }}
               transition={{ duration: 0.5 }}
               style={{ willChange: "transform, opacity" }}
-              className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-6"
+              className="relative text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-6"
             >
+              {/* Christmas Bell Component */}
+              {activeTheme === "christmas" && <Bells />}
               Experience
             </motion.h1>
             <div className="relative border-l border-zinc-700 ml-3 md:ml-4 mt-6">
