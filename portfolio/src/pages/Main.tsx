@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ProfileFlipCard } from "@/components/ProfileFlipCard";
 import { useSeasonalTheme } from "@/hooks/useSeasonalTheme";
 import { SeasonalDecorations } from "@/components/SeasonalDecorations";
-import { SpiderWebs } from "@/components/halloween";
+import { SpiderWebs, Spiders } from "@/components/halloween";
 
 interface MainProps {
   data: PortfolioData | null;
@@ -29,7 +29,12 @@ function Main({ data }: MainProps): React.JSX.Element {
       <SeasonalDecorations theme={activeTheme} />
 
       {/* Halloween Top Corner Webs Component */}
-      {activeTheme === "halloween" && <SpiderWebs />}
+      {activeTheme === "halloween" && (
+        <>
+          <SpiderWebs />
+          <Spiders />
+        </>
+      )}
 
       {/* --- CONTAINER --- */}
       <div className="relative w-full h-full flex flex-col md:justify-start mt-24 lg:mt-0 lg:justify-center items-center lg:block">

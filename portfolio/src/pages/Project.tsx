@@ -60,7 +60,7 @@ function Project({ data }: DataProps): React.JSX.Element {
   return (
     <div
       id="projects"
-      className="relative w-full lg:min-h-screen items-center justify-center flex flex-col pt-12 pb-2 overflow-hidden"
+      className="relative w-full lg:min-h-screen items-center justify-center flex flex-col pt-16 md:pt-24 lg:pt-16 pb-2 overflow-hidden"
     >
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-special-gothic text-white mb-6">
         Projects
