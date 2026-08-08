@@ -16,7 +16,7 @@ function About({ data }: AboutProps): React.JSX.Element {
     seasonalAboutImageUrl ?? (data?.about_image ? urlFor(data.about_image).url() : "");
 
   return (
-    <div id="about" className="relative overflow-hidden w-screen lg:h-screen items-center justify-center flex flex-col">
+    <div id="about" className="relative overflow-hidden w-screen pt-16 md:pt-24 lg:pt-16 lg:h-screen items-center justify-center flex flex-col">
       {/* Halloween Bloody Hand Component */}
       {activeTheme === "halloween" && <BloodyHand />}
 

@@ -35,7 +35,7 @@ function Experience({ data }: DataProps): React.JSX.Element {
     : [];
 
   return (
-    <div id="experience" className="relative overflow-hidden w-screen lg:py-10">
+    <div id="experience" className="relative overflow-hidden w-screen pt-16 md:pt-24 lg:pt-16">
       {/* Halloween Blood Scratch Component */}
       {activeTheme === "halloween" && <BloodScratch />}
 

@@ -32,7 +32,7 @@ function Main({ data }: MainProps): React.JSX.Element {
       {activeTheme === "halloween" && <SpiderWebs />}
 
       {/* --- CONTAINER --- */}
-      <div className="relative w-full h-full flex flex-col md:justify-start mt-10 lg:mt-0 lg:justify-center items-center lg:block">
+      <div className="relative w-full h-full flex flex-col md:justify-start mt-24 lg:mt-0 lg:justify-center items-center lg:block">
         {/* 1. PROFILE PICTURE (interactive flip card) */}
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.95 }}

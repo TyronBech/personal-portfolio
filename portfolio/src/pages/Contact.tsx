@@ -12,7 +12,7 @@ interface ContactProps {
 function Contact({ data }: ContactProps): React.JSX.Element {
   const { activeTheme } = useSeasonalTheme(data);
 
-  const text = activeTheme !== "normal" ? "text-sm md:text-base text-white font-lexend max-w-md mx-auto" : "text-sm md:text-base text-zinc-400 font-lexend max-w-md mx-auto";
+  const text = activeTheme === "halloween" ? "text-sm md:text-base text-white font-lexend max-w-md mx-auto" : "text-sm md:text-base text-zinc-400 font-lexend max-w-md mx-auto";
 
   return (
     <div
