@@ -5,7 +5,6 @@ export type SeasonalThemeType = "halloween" | "christmas" | "birthday" | "normal
 export interface ActiveSeasonalState {
   activeTheme: SeasonalThemeType;
   decoration: SeasonalDecoration | null;
-  isOverridden: boolean;
 }
 
 /**
@@ -57,31 +56,46 @@ export function determineActiveTheme(
   const currentDate = customDate ?? new Date();
   const currentMMDD = getMMDD(currentDate);
 
-  // Sanity decorations exist, strictly check them against today's date
   if (sanityDecorations && sanityDecorations.length > 0) {
+    let bestMatch: SeasonalDecoration | null = null;
+    let maxPriority = -1;
+    let bestThemeKey: SeasonalThemeType | null = null;
+
+    const getPriority = (key: string) => {
+      if (key === "birthday") return 3;
+      if (key === "halloween") return 2;
+      if (key === "christmas") return 1;
+      return -1; // Ignore unknown themes
+    };
+
     for (const item of sanityDecorations) {
       if (item.is_active !== false && isMMDDInRange(currentMMDD, item.start_date, item.end_date)) {
         const themeKey = item.name.trim().toLowerCase();
-        if (themeKey === "halloween" || themeKey === "christmas" || themeKey === "birthday") {
-          return {
-            activeTheme: themeKey as SeasonalThemeType,
-            decoration: item,
-            isOverridden: false,
-          };
+        const priority = getPriority(themeKey);
+        
+        if (priority > maxPriority) {
+          maxPriority = priority;
+          bestMatch = item;
+          bestThemeKey = themeKey as SeasonalThemeType;
         }
       }
+    }
+
+    if (bestMatch && bestThemeKey) {
+      return {
+        activeTheme: bestThemeKey,
+        decoration: bestMatch,
+      };
     }
 
     return {
       activeTheme: "normal",
       decoration: null,
-      isOverridden: false,
     };
   }
 
   return {
     activeTheme: "normal",
     decoration: null,
-    isOverridden: false,
   };
 }
