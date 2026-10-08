@@ -1,10 +1,9 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Featured } from "@/types/portfolio";
 import { urlFor } from "@/data/sanity";
 import { FeaturedFullscreen } from "@/components/Featured";
-import type { Options as ConfettiOptions } from "canvas-confetti";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -18,44 +17,6 @@ interface ProfileFlipCardProps {
   seasonalTheme?: "halloween" | "christmas" | "birthday" | "normal";
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-async function fireConfetti(origin: { x: number; y: number }) {
-  // Dynamic import keeps Vite's ESM happy (no require())
-  const mod = await import("canvas-confetti");
-  const confetti = mod.default as (options?: ConfettiOptions) => void;
-  const colors = ["#ea580c", "#f97316", "#ffffff", "#a1a1aa"];
-
-  const randomInRange = (min: number, max: number) =>
-    Math.random() * (max - min) + min;
-
-  // Fireworks effect: 5 rapid 360-degree bursts around the card
-  let bursts = 0;
-  const maxBursts = 5;
-
-  const interval = setInterval(() => {
-    if (bursts >= maxBursts) {
-      clearInterval(interval);
-      return;
-    }
-
-    confetti({
-      particleCount: 60,
-      spread: 360,
-      startVelocity: 35,
-      gravity: 1.1,
-      ticks: 120,
-      colors,
-      zIndex: 20000,
-      origin: {
-        x: origin.x + randomInRange(-0.05, 0.05),
-        y: origin.y + randomInRange(-0.05, 0.05),
-      },
-    });
-    bursts++;
-  }, 180);
-}
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 /**
@@ -63,7 +24,7 @@ async function fireConfetti(origin: { x: number; y: number }) {
  *
  * 3-state interactive card:
  *  0. "normal"  – shows the profile image; clickable
- *  1. "flipped" – Z-axis flip reveals a random featured item's image + confetti
+ *  1. "flipped" – Z-axis flip reveals a random featured item's image
  *  2. "modal"   – second click expands to a full-screen overlay with details
  *
  * Clicking anywhere while in "modal" state resets back to "normal".
@@ -77,7 +38,6 @@ export function ProfileFlipCard({
 }: ProfileFlipCardProps): React.JSX.Element {
   const [flipState, setFlipState] = useState<FlipState>("normal");
   const [featured, setFeatured] = useState<Featured | null>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
 
   const borderHoverClass =
     seasonalTheme === "christmas"
@@ -93,16 +53,6 @@ export function ProfileFlipCard({
     if (!featuredItems || featuredItems.length === 0) return null;
     return featuredItems[Math.floor(Math.random() * featuredItems.length)];
   }, [featuredItems]);
-
-  // Derive origin for confetti from the card's bounding rect
-  const getConfettiOrigin = useCallback(() => {
-    if (!cardRef.current) return { x: 0.5, y: 0.5 };
-    const rect = cardRef.current.getBoundingClientRect();
-    return {
-      x: (rect.left + rect.width / 2) / window.innerWidth,
-      y: (rect.top + rect.height / 2) / window.innerHeight,
-    };
-  }, []);
 
   // ── State machine ──────────────────────────────────────────────────────────
 
@@ -122,7 +72,6 @@ export function ProfileFlipCard({
         }
         setFeatured(item);
         setFlipState("flipped");
-        setTimeout(() => void fireConfetti(getConfettiOrigin()), 350);
         return;
       }
 
@@ -131,7 +80,7 @@ export function ProfileFlipCard({
         return;
       }
     },
-    [flipState, pickRandomFeatured, getConfettiOrigin, isActivated],
+    [flipState, pickRandomFeatured, isActivated],
   );
 
   const resetToNormal = useCallback(() => {
@@ -160,7 +109,6 @@ export function ProfileFlipCard({
     <>
       {/* States 0 & 1: flip card only — no extra rendering */}
       <div
-        ref={cardRef}
         className={`relative ${className}`}
         style={{ perspective: "1200px" }}
         onClick={handleCardClick}

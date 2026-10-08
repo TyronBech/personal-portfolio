@@ -1,48 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import type { Featured } from "@/types/portfolio";
 import { urlFor } from "@/data/sanity";
-import type { Options as ConfettiOptions } from "canvas-confetti";
-
-async function fireSideConfetti() {
-  const m = await import("canvas-confetti");
-  const confetti = m.default as (options?: ConfettiOptions) => void;
-  const colors = ["#ea580c", "#f97316", "#ffffff", "#a1a1aa"];
-  const duration = 1300;
-  const animationEnd = Date.now() + duration;
-
-  (function frame() {
-    const timeLeft = animationEnd - Date.now();
-
-    if (timeLeft <= 0) {
-      return;
-    }
-
-    // Fire from left edge
-    confetti({
-      particleCount: 4,
-      angle: 60,
-      spread: 80,
-      origin: { x: -0.01, y: 0.65 },
-      colors,
-      startVelocity: 40,
-      zIndex: 200,
-    });
-
-    // Fire from right edge
-    confetti({
-      particleCount: 4,
-      angle: 120,
-      spread: 80,
-      origin: { x: 1.01, y: 0.65 },
-      colors,
-      startVelocity: 40,
-      zIndex: 200,
-    });
-
-    requestAnimationFrame(frame);
-  })();
-}
 
 interface FeaturedFullscreenProps {
   featured: Featured;
@@ -64,14 +23,6 @@ export function FeaturedFullscreen({
   featured,
   onClose,
 }: FeaturedFullscreenProps): React.JSX.Element {
-  useEffect(() => {
-    // Fire side-by-side confetti exactly when the fullscreen modal mounts
-    const timer = setTimeout(() => {
-      void fireSideConfetti();
-    }, 150); // Slight delay so the overlay starts fading in first
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     // Single root div: fixed inset-0 = 100vw × 100vh, covers EVERYTHING
     <div
